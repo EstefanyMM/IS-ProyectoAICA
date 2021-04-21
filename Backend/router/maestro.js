@@ -17,4 +17,12 @@ router.get('/idioma/:id', maestro.getIdiomasPorMaestro);
 
 router.post('/loginn', maestro.loginn);
 
+router.get('/idioma/:id', maestro.getIdiomasPorMaestro);
+
+router.post('/loginn', maestro.loginn);
+
+router.post('/restablecer-contrasena', maestro.obtenercodigoMaestro);
+
+router.put('/:id/actualizar-contrasena', maestro.actualizarcontrasena);
+
 module.exports = router;

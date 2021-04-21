@@ -36,7 +36,7 @@ const PerfilPrueba = () => {
     });
  
   const { nombreUsuario, Persona, id } = user;
-  //const { nombreCompleto } = Persona;
+  //const { nombreCompleto, Correos } = Persona;
 
   useEffect(() => {
     getUser();

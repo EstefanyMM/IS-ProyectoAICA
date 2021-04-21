@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import "../css/LoginPrueba.css";
 import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
 
 const LoginPrueba = () => {
 
@@ -96,7 +97,7 @@ const LoginPrueba = () => {
                     <div className="final">
                         <p>No puedes iniciar sesion? <a href="/sign-up">Registrate</a></p>
                     </div>
-                    <p className="forget">Olvidaste tu contraseña?</p><p>No puedes iniciar sesion? <a href="/">Inicio</a></p>
+                    <Link to="/codigo-seguridad" className="forget">Olvidaste tu contraseña?</Link><p>No puedes iniciar sesion? <a href="/">Inicio</a></p>
                 </div>
                 <div className="espacio7"></div>
             </form>

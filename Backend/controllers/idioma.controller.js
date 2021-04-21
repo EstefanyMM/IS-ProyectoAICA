@@ -6,18 +6,17 @@ const ArchivoIdiomas = require('../models').ArchivoIdioma;
 const Archivos = require('../models').Archivo;
 
 const obtenerIdiomas = async (req = request, res = response) => {
-    
-    let idiomas = await Idiomas.findAll({
-        
-    });
+
+    let idiomas = await Idiomas.findAll({});
 
     res.send(idiomas);
 }
 
+
 const getIdioma = async (req = request, res = response) => {
-    
+
     let idioma = await Idiomas.findOne({
-        where : {
+        where: {
             id: req.params.id
         }
     });
@@ -28,15 +27,15 @@ const getIdioma = async (req = request, res = response) => {
 const editarIdioma = async (req = request, res = response) => {
     let idiomas = await Idiomas.findByPk(req.params.id)
 
-        if (idiomas) {
+    if (idiomas) {
 
-            await idiomas.update({
-                nombre: req.body.nombre,
-                descripcion: req.body.descripcion,
-                precio: req.body.precio,
-                totalEstudiante: req.body.totalEstudiante	
-            });
-        }
+        await idiomas.update({
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            precio: req.body.precio,
+            totalEstudiante: req.body.totalEstudiante
+        });
+    }
     res.send(idiomas);
 }
 
@@ -48,7 +47,7 @@ const eliminarIdioma = async (req = request, res = response) => {
         }
     });
     //res.status(idioma).send({ mensaje: 'Peticion delete' })
-    res.send({ok: true});
+    res.send({ ok: true });
 }
 
 const agregarIdioma = async (req = request, res = response) => {
@@ -57,7 +56,7 @@ const agregarIdioma = async (req = request, res = response) => {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         precio: req.body.precio,
-        totalEstudiante: req.body.totalEstudiante	
+        totalEstudiante: req.body.totalEstudiante
     });
 
     res.send(newIdioma);
@@ -73,7 +72,7 @@ const getAsignacionesporIdioma = async (req = request, res = response) => {
             {
                 model: Idiomas
             }, {
-               model: Asignaciones
+                model: Asignaciones
             }
         ]
 
@@ -89,8 +88,8 @@ const getArchivoporIdioma = async (req = request, res = response) => {
             IdiomaId: req.params.id
         },
         include: [
-         {
-               model: Archivos
+            {
+                model: Archivos
             }
         ]
 
@@ -124,7 +123,7 @@ const agregarTarea = async (req = request, res = response) => {
             if (archivo.id) {
                 let archivosPorIdioma = ArchivoIdiomas.create({
                     ArchivoId: archivo.id,
-                    IdiomaId: req.params.id 
+                    IdiomaId: req.params.id
                 })
             }
 

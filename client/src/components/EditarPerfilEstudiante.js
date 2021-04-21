@@ -25,7 +25,12 @@ import swal from 'sweetalert';
         }
       );
     
+<<<<<<< HEAD
         const { nombreCompleto, numeroIdentidad, direccion, edad, numeroTelefono, id} = user;
+=======
+        const { nombreUsuario, Persona , id} = user;
+        const { nombreCompleto, numeroIdentidad, direccion, edad, numeroTelefono} = Persona;
+>>>>>>> 6cea3d8562621943ed082fb36521f34ea5a1c2b0
     
         useEffect(() => {
           getUser();
@@ -58,6 +63,19 @@ import swal from 'sweetalert';
                 ...user,
                 [e.target.name]: e.target.value
             });
+        }
+
+        const handleInputChangeImage = async (e) =>{
+
+          let formData = new FormData();
+
+          formData.append('foto', e.target.files[0]);
+
+          const res = await axios.put('http://localhost:4000/estudiante/'+ id +'/subir', formData);
+          const body = await res.data;
+
+          console.log(body);
+
         }
     
         const editarEstudiante = async () => {
@@ -142,6 +160,12 @@ import swal from 'sweetalert';
                             <input value={nombreCompleto} type="text" name="nombreCompleto" 
                             placeholder="HolA" id="exampleInputEmail1"
                             className="bordeInput1 largo1" onChange={handleInputChange}></input>
+                        </div>
+
+                        <div className="col-md-4 offset-md-2">
+                            <label id="exampleInputEmail1">Actualizar foto</label>
+                            <input type="file" class="form-control"  
+                            className="bordeInput1 largo1" onChange={handleInputChangeImage}></input>
                         </div>
                         <div className="col-md-4 offset-md-2">
                             <label>Numero de identidad</label>

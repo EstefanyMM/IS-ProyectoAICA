@@ -37,6 +37,11 @@ import EditarPerfilEstudiante from './components/EditarPerfilEstudiante';
 import CodigoSeguridad from './components/CodigoSeguridad';
 import MostrarPerfilMaestro from './components/MostrarPerfilMaestro';
 import EditarPerfilMaestro from './components/EditarPerfilMaestro';
+import CodigoSeguridadMaestro from './components/CodigoSeguridadMaestro';
+import codigoseguridadEstudiante from './components/codigoseguridadEstudiante';
+import Crearsecciones from './components/crear_secciones'
+
+
 
 function App() {
   return (<Router>
@@ -46,6 +51,8 @@ function App() {
           <Switch>
             <Route exact path='/' component={LandingPage} />
             <Route exact path='/prueba' component={Prueba} />
+            <Route exact path='/crear-seciones' component={Crearsecciones} />
+
             <Route exact path="/login" component={LoginPrueba} />
             <Route exact path="/sign-up" component={Prueba} />
             <Route path ="/Navigation" component ={Navigation} />
@@ -71,9 +78,13 @@ function App() {
             <Route exact path='/matricular/:id' component={Matricular}/>
             <Route exact path='/mostrar-perfil' component={MostarPerfilEstudiante}/>
             <Route exact path='/editarEstudiante/:Id' component={EditarPerfilEstudiante}/>
+
             <Route exact path='/codigo-seguridad' component={CodigoSeguridad}/>
             <Route exact path='/mostrar-perfilm' component={MostrarPerfilMaestro}/>   
             <Route exact path='/editarMaestro/:Id' component={EditarPerfilMaestro}/>         
+            <Route exact path='/codigo-seguridad' component={codigoseguridadEstudiante}/>
+            <Route exact path='/codigo-seguridad-maestro' component={CodigoSeguridadMaestro}/>
+
           </Switch>
         </div>
       </div>

@@ -4,8 +4,8 @@ const Estudiantes = require('../models').Estudiante;
 const Correos = require('../models').Correo;
 const Idiomas = require('../models').Idioma;
 const EstudianteIdiomas = require('../models').EstudianteIdioma;
-let path = require('path');
-let fs = require('fs');
+const fs = require('fs');
+const path = require('path');
 
 
 const getEstudiantes = async (req = request, res = response) => {
@@ -44,6 +44,22 @@ const editarEstudiante = async (req = request, res = response) => {
 
     if (estudiantes) {
 
+
+        newPersona = await Personas.update({
+            nombreCompleto: req.body.nombreCompleto,
+            numeroIdentidad: req.body.numeroIdentidad,
+            direccion: req.body.direccion,
+            edad: req.body.edad,
+            numeroTelefono: req.body.numeroTelefono
+        });
+
+        newCorreo = await Correos.update({
+            email: req.body.email,
+            PersonaId: newPersona.id
+        });
+
+
+
         await estudiantes.update({
             fechaRegistro: req.body.fechaRegistro,
             password: req.body.password,
@@ -54,6 +70,7 @@ const editarEstudiante = async (req = request, res = response) => {
     }
     res.send(estudiantes);
 }
+
 
 const eliminarEstudiante = async (req = request, res = response) => {
     //let estudiante = 
@@ -148,6 +165,67 @@ const login = async (req = request, res = response) => {
     }
 }
 
+
+const obtenercodigo = async (req = request, res = response) => {
+
+    let estudiante = await Estudiantes.findOne({
+        where: {
+            codigoSeguridad: req.body.codigo
+        },
+        include: [{
+            model: Personas,
+            include: [{
+                model: Correos,
+                where: {
+                    email: req.body.correo
+                }
+            }]
+        }
+        ]
+    });
+
+    if (estudiante) {
+        res.send({ id: estudiante.id, ok: true });
+    }
+    else {
+        res.send({ ok: false });
+    }
+}
+
+const actualizarcontrasena = async (req = request, res = response) => {
+    let estudiante = await Estudiantes.findByPk(req.params.id)
+
+    if (estudiante) {
+        await estudiante.update({ password: req.body.contrasena });
+
+        res.send({ ok: true });
+    }
+    else {
+        res.send({ ok: false });
+    }
+
+}
+
+const obtenerFoto = async (req = request, res = response) => {
+
+    let estudiante = await Estudiantes.findByPk(
+        req.params.id
+    )
+    if (estudiante) {
+        let { fotoPerfil } = estudiante;
+        let pathVideo = path.resolve(__dirname, `../${fotoPerfil}`);
+
+        if (fs.existsSync(pathVideo)) {
+            res.sendFile(pathVideo);
+        } else {
+            let pathNoImagen = path.resolve(__dirname, `../fotoEstudiante/no-image.png`);
+            res.sendFile(pathNoImagen);
+        }
+    } else {
+        res.json({ message: 'no existe estudiante' })
+    }
+}
+
 const subirFoto = async (req = request, res = response) => {
 
 
@@ -170,7 +248,7 @@ const subirFoto = async (req = request, res = response) => {
 
             if (estudiante) {
                 await estudiante.update({
-                    fotoPerfil:fileUrl
+                    fotoPerfil: fileUrl
                 })
             }
 
@@ -188,56 +266,6 @@ const subirFoto = async (req = request, res = response) => {
 
 }
 
-const obtenerFoto = async (req = request, res = response) => {
-
-    let estudiante = await Estudiantes.findByPk(
-        req.params.id
-    )
-    if(estudiante){
-        let { fotoPerfil } = estudiante;
-            let pathVideo = path.resolve(__dirname, `../${fotoPerfil}`);
-
-            if (fs.existsSync(pathVideo)) {
-                res.sendFile(pathVideo);
-            } else {
-                let pathNoImagen = path.resolve(__dirname, `../fotoEstudiante/no-image.png`);
-                res.sendFile(pathNoImagen);
-            }
-    }else{
-        res.json({message:'no existe estudiante'})
-    }
-}
-
-const obtenercodigo = async (req = request, res = response) => {
-       
-    let estudiante = await Estudiantes.findOne({
-        where: {
-            codigoSeguridad: req.body.codigo
-        },
-        include: [{
-            model: Personas,
-            include: [{
-                model: Correos,
-                where: {
-                    email: req.body.correo
-                }
-            }]
-        }
-        ]
-    });
-
-   
-
-    if (estudiante) {
-        res.send({ id: estudiante.id, ok: true });
-    }
-    else {
-        res.send({ ok: false });
-    }
-
-
-} 
-
 module.exports = {
     getEstudiantes,
     editarEstudiante,
@@ -246,8 +274,8 @@ module.exports = {
     getEstudiante,
     getEstudiantePorIdiomas,
     login,
-    subirFoto,
+    obtenercodigo,
+    actualizarcontrasena,
     obtenerFoto,
-    obtenercodigo
-
+    subirFoto
 }

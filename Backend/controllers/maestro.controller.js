@@ -117,6 +117,108 @@ const loginn = async (req = request, res = response) => {
     }
 }
 
+const obtenercodigoMaestro = async (req = request, res = response) => {
+       
+    let maestro = await Maestros.findOne({
+        where: {
+            codigoSeguridad: req.body.codigo
+        },
+        include: [{
+            model: Personas,
+            include: [{
+                model: Correos,
+                where: {
+                    email: req.body.correo
+                }
+            }]
+        }
+        ]
+    });
+
+    if (maestro) {
+        res.send({ id: maestro.id, ok: true });
+    }
+    else {
+        res.send({ ok: false });
+    }
+} 
+
+const actualizarcontrasena = async (req = request, res = response) => {
+
+    let maestro = await Maestros.findByPk(req.params.id)
+
+    if (maestro) {
+        await maestro.update({ password: req.body.contrasena });
+
+        res.send({ ok: true });
+    }
+    else {
+        res.send({ ok: false });
+    }
+
+}
+
+const obtenerFoto = async (req = request, res = response) => {
+
+    let maestro = await Maestros.findByPk(
+        req.params.id
+    )
+    if (maestro) {
+        let { fotoPerfil } = maestro;
+        let pathVideo = path.resolve(__dirname, `../${fotoPerfil}`);
+
+        if (fs.existsSync(pathVideo)) {
+            res.sendFile(pathVideo);
+        } else {
+            let pathNoImagen = path.resolve(__dirname, `../fotoMestro/no-image.png`);
+            res.sendFile(pathNoImagen);
+        }
+    } else {
+        res.json({ message: 'no existe maestro' })
+    }
+}
+
+const subirFoto = async (req = request, res = response) => {
+
+
+    if (!req.files) {
+        return res.status(400).json({ message: 'No ha seleccionado un archivo' });
+    }
+
+    let file = req.files.foto
+    let fileUrl = `fotoMaestro/${file.name}`;
+
+    file.mv(fileUrl, async (err) => {
+        if (err)
+            return res.status(500).send(err);
+
+        try {
+
+            let maestro = await Maestros.findByPk(
+                req.params.id
+            );
+
+            if (maestro) {
+                await estudiante.update({
+                    fotoPerfil: fileUrl
+                })
+            }
+
+            res.status(200).json({
+                estudiante,
+                message: 'Foto subida con exito!'
+            })
+        } catch (error) {
+            return res.status(500).json({
+                error: error.message
+            })
+        }
+
+    });
+
+}
+
+
 module.exports = {
     agregarMaestro,
     obtenerMaestros,
@@ -124,5 +226,9 @@ module.exports = {
     editarMaestro,
     eliminarMaestro,
     getIdiomasPorMaestro,
-    loginn
+    loginn,
+    obtenercodigoMaestro,
+    actualizarcontrasena,
+    obtenerFoto,
+    subirFoto
 }
