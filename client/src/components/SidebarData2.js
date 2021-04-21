@@ -32,9 +32,9 @@ export const SidebarData2 = [
         cName: 'nav-text'
     },
     {
-        title: 'Messages',
-        path: '/messager',
-        icon: <FaIcons.FaEnvelopeOpenText />,
+        title: 'Listado',
+        path: '/Listados',
+        icon: <FaIcons.FaCartPlus />,
         cName: 'nav-text'
     },
     {
