@@ -1,7 +1,7 @@
 import React, { useState, } from 'react'
 import axios from "axios";
 
-const Codigoseguridad = () => {
+const CodigoSeguridadEstudiante = () => {
     const [mostrar, setmostrar] = useState(false);
     const [user, setUser] = useState({ correo: " ", codigo: " " });
     const [idusuario, setidusuario] = useState(0);
@@ -30,7 +30,7 @@ const Codigoseguridad = () => {
         e.preventDefault();
         console.log(user);
 
-        const res = await axios.post('http://localhost:4000/estudiante/restablecer-contrasena ', user);
+        const res = await axios.post('http://localhost:4000/estudiante/restablecer-contrasena', user);
         const data = await res.data;
         console.log(data);
 
@@ -60,10 +60,6 @@ const Codigoseguridad = () => {
             window.location.href='/login'
 
         }
-        
-
-
-
     }
 
     return (
@@ -165,4 +161,4 @@ const Codigoseguridad = () => {
     )
 
 }
-export default Codigoseguridad;
+export default CodigoSeguridadEstudiante;

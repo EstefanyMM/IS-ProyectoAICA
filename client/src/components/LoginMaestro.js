@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import "../css/LoginPrueba.css";
 import swal from 'sweetalert';
+import { Link } from "react-router-dom";
 
 const Maestro = () => {
 
@@ -94,7 +95,7 @@ const handleSutmit = async (e) =>{
             <div className="final">
                 <p>No puedes iniciar sesion? <a href="/">Regresar</a></p>
             </div>
-            <p className="forget">Olvidaste tu contraseña?</p>
+            <Link to="/codigo-seguridad-maestro" className="forget">Olvidaste tu contraseña?</Link>
         </div>
         <div className="espacio7"></div>
     </form>

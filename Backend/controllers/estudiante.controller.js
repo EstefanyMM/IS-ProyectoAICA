@@ -39,32 +39,32 @@ const getEstudiante = async (req = request, res = response) => {
 const editarEstudiante = async (req = request, res = response) => {
     let estudiantes = await Estudiantes.findByPk(req.params.id)
 
-        if (estudiantes) {
+    if (estudiantes) {
 
 
-            newPersona = await Personas.update({
-                nombreCompleto: req.body.nombreCompleto,
-                numeroIdentidad: req.body.numeroIdentidad,
-                direccion: req.body.direccion,
-                edad: req.body.edad,
-                numeroTelefono: req.body.numeroTelefono
-            });
-        
-            newCorreo = await Correos.update({
-                email: req.body.email,
-                PersonaId: newPersona.id
-            });
-        
+        newPersona = await Personas.update({
+            nombreCompleto: req.body.nombreCompleto,
+            numeroIdentidad: req.body.numeroIdentidad,
+            direccion: req.body.direccion,
+            edad: req.body.edad,
+            numeroTelefono: req.body.numeroTelefono
+        });
+
+        newCorreo = await Correos.update({
+            email: req.body.email,
+            PersonaId: newPersona.id
+        });
 
 
-            await estudiantes.update({
-                fechaRegistro: req.body.fechaRegistro,
-                password: req.body.password,
-                codigoSeguridad: req.body.codigoSeguridad,
-                nombreUsuario: req.body.nombreUsuario,
-                PersonaId: newPersona.id
-            });
-        }
+
+        await estudiantes.update({
+            fechaRegistro: req.body.fechaRegistro,
+            password: req.body.password,
+            codigoSeguridad: req.body.codigoSeguridad,
+            nombreUsuario: req.body.nombreUsuario,
+            PersonaId: newPersona.id
+        });
+    }
     res.send(estudiantes);
 }
 
@@ -164,7 +164,7 @@ const login = async (req = request, res = response) => {
 
 
 const obtenercodigo = async (req = request, res = response) => {
-       
+
     let estudiante = await Estudiantes.findOne({
         where: {
             codigoSeguridad: req.body.codigo
@@ -181,32 +181,87 @@ const obtenercodigo = async (req = request, res = response) => {
         ]
     });
 
-   
-
     if (estudiante) {
         res.send({ id: estudiante.id, ok: true });
     }
     else {
         res.send({ ok: false });
     }
-
-
-} 
+}
 
 const actualizarcontrasena = async (req = request, res = response) => {
-let estudiante =await Estudiantes.findByPk(req.params.id)
+    let estudiante = await Estudiantes.findByPk(req.params.id)
 
-if (estudiante) {
-   await estudiante.update({  password: req.body.contrasena  });
+    if (estudiante) {
+        await estudiante.update({ password: req.body.contrasena });
 
-    res.send({  ok: true });
+        res.send({ ok: true });
+    }
+    else {
+        res.send({ ok: false });
+    }
+
 }
-else {
-    res.send({ ok: false });
+
+const obtenerFoto = async (req = request, res = response) => {
+
+    let estudiante = await Estudiantes.findByPk(
+        req.params.id
+    )
+    if (estudiante) {
+        let { fotoPerfil } = estudiante;
+        let pathVideo = path.resolve(__dirname, `../${fotoPerfil}`);
+
+        if (fs.existsSync(pathVideo)) {
+            res.sendFile(pathVideo);
+        } else {
+            let pathNoImagen = path.resolve(__dirname, `../fotoEstudiante/no-image.png`);
+            res.sendFile(pathNoImagen);
+        }
+    } else {
+        res.json({ message: 'no existe estudiante' })
+    }
 }
 
+const subirFoto = async (req = request, res = response) => {
 
-} 
+
+    if (!req.files) {
+        return res.status(400).json({ message: 'No ha seleccionado un archivo' });
+    }
+
+    let file = req.files.foto
+    let fileUrl = `fotoEstudiante/${file.name}`;
+
+    file.mv(fileUrl, async (err) => {
+        if (err)
+            return res.status(500).send(err);
+
+        try {
+
+            let estudiante = await Estudiantes.findByPk(
+                req.params.id
+            );
+
+            if (estudiante) {
+                await estudiante.update({
+                    fotoPerfil: fileUrl
+                })
+            }
+
+            res.status(200).json({
+                estudiante,
+                message: 'Foto subida con exito!'
+            })
+        } catch (error) {
+            return res.status(500).json({
+                error: error.message
+            })
+        }
+
+    });
+
+}
 
 module.exports = {
     getEstudiantes,
@@ -217,5 +272,7 @@ module.exports = {
     getEstudiantePorIdiomas,
     login,
     obtenercodigo,
-    actualizarcontrasena
+    actualizarcontrasena,
+    obtenerFoto,
+    subirFoto
 }

@@ -34,7 +34,9 @@ import AsignacionesMaestro from './components/AsignacionesMaestro';
 import Matricular from './components/matricular';
 import MostarPerfilEstudiante from './components/MostarPerfilEstudiante';
 import EditarPerfilEstudiante from './components/EditarPerfilEstudiante';
-import CodigoSeguridad from './components/CodigoSeguridad';
+import CodigoSeguridadMaestro from './components/CodigoSeguridadMaestro';
+import codigoseguridadEstudiante from './components/codigoseguridadEstudiante';
+
 
 function App() {
   return (<Router>
@@ -70,7 +72,9 @@ function App() {
             <Route exact path='/matricular/:id' component={Matricular}/>
             <Route exact path='/mostrar-perfil' component={MostarPerfilEstudiante}/>
             <Route exact path='/editarEstudiante/:Id' component={EditarPerfilEstudiante}/>
-            <Route exact path='/codigo-seguridad' component={CodigoSeguridad}/>
+            <Route exact path='/codigo-seguridad' component={codigoseguridadEstudiante}/>
+            <Route exact path='/codigo-seguridad-maestro' component={CodigoSeguridadMaestro}/>
+
             
           </Switch>
         </div>
