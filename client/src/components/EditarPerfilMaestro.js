@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link, useParams } from 'react-router-dom'
-import { SidebarData } from './SidebarData'
+import { SidebarData2 } from './SidebarData2'
 import '../css/perfilEstudiante.css'
 import { IconContext} from 'react-icons'
 import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardBody, MDBCardTitle, MDBCardText, 
@@ -11,8 +11,8 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 
- const EditarPerfilEstudiante = () => {
-    const [user, setUser] = useState(
+ const EditarPerfilMaestro = () => {
+    const [maestro, setMaestro] = useState(
         {
           
             id: '',
@@ -25,7 +25,7 @@ import swal from 'sweetalert';
         }
       );
     
-        const { nombreCompleto, numeroIdentidad, direccion, edad, numeroTelefono, id} = user;
+        const { nombreCompleto, numeroIdentidad, direccion, edad, numeroTelefono, id} = maestro;
     
         useEffect(() => {
           getUser();
@@ -37,33 +37,33 @@ import swal from 'sweetalert';
         }
     
         const logoutt = () => {
-          window.location.href = '/perfil-estudiante';
+          window.location.href = '/perfil-maestro';
         }
     
         //const {id} = useParams();
     
         const getUser = async () => {
-          let { Id } = JSON.parse(localStorage.getItem('user'));
+          let { Id } = JSON.parse(localStorage.getItem('maestro'));
       
-          const res = await axios.get('http://localhost:4000/estudiante/' + Id);
+          const res = await axios.get('http://localhost:4000/maestro/' + Id);
           const data = await res.data;
       
-          setUser(data.Persona);
+          setMaestro(data.Persona);
           console.log(data);
       
         }
     
         const handleInputChange = (e) => {
-            setUser({
-                ...user,
+            setMaestro({
+                ...maestro,
                 [e.target.name]: e.target.value
             });
         }
     
-        const editarEstudiante = async () => {
-          let { Id } = JSON.parse(localStorage.getItem('user'));
+        const editarMaestro = async () => {
+          let { Id } = JSON.parse(localStorage.getItem('maestro'));
     
-          const resp1 = await axios.put('http://localhost:4000/persona/' + id, user);
+          const resp1 = await axios.put('http://localhost:4000/persona/' + id, maestro);
           const data1 = await resp1.data;
     
           //const resp = await axios.put('http://localhost:4000/estudiante/' + Id, user);
@@ -99,7 +99,7 @@ import swal from 'sweetalert';
     
         const showSidebar = () => setSidebar(!sidebar)
     
-        if (JSON.parse(localStorage.getItem('user'))) {
+        if (JSON.parse(localStorage.getItem('maestro'))) {
           const sizeRule = {minHeight: '41rem'}
           return (
             <>
@@ -134,7 +134,7 @@ import swal from 'sweetalert';
                     <div className="card col-md-16 my-4">
                     <div className="card-body">
                     <h4 className="font-weight-extrabold my-4 card-title">Informacion Personal</h4>
-                    <img src={`http://localhost:4000/estudiante/${id}/obtenerFoto`} className="imagenPerfil"></img>
+                    <img src={`http://localhost:4000/maestro/${id}/obtenerFoto`} className="imagenPerfil"></img>
                     <div className="form=group">
                         <div className="row justify-content-around">
                         <div className="col-md-4 offset-md-2">
@@ -183,7 +183,7 @@ import swal from 'sweetalert';
                         </div>
                         </div>
                         <div className="espacio8"></div>
-                        <button type="button" class="btn btn-success" onClick={editarEstudiante}>Guardar Cambios</button>
+                        <button type="button" class="btn btn-success" onClick={editarMaestro}>Guardar Cambios</button>
     
                     </div>
                     </div>
@@ -202,7 +202,7 @@ import swal from 'sweetalert';
                         <AiIcons.AiOutlineClose />
                       </Link>
                     </li>
-                    {SidebarData.map((item, index) => {
+                    {SidebarData2.map((item, index) => {
                       return (
                         <li Key={index} className={item.cName} >
                           <Link to={item.path}>
@@ -226,4 +226,4 @@ import swal from 'sweetalert';
    
 }
 
-export default EditarPerfilEstudiante;
+export default EditarPerfilMaestro;

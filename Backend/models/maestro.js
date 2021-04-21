@@ -17,10 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Maestro.init({
+    nombreUsuario: DataTypes.STRING,
     descripcion: DataTypes.STRING,
     password: DataTypes.STRING,
     codigoSeguridad: DataTypes.STRING,
-    nombreUsuario: DataTypes.STRING
+    fotoPerfil: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Maestro',

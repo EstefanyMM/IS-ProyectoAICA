@@ -38,9 +38,7 @@ const obtenerMaestros = async (req = request, res = response) => {
             {
                 model: Personas,
                 include: [{ model: Correos }]
-
             }
-
         ]
     });
 

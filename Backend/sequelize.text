@@ -11,7 +11,7 @@ npx sequelize-cli model:generate --name Factura --attributes fechaIngreso:date, 
 npx sequelize-cli model:generate --name Estudiante --attributes nombreUsuario:string, fechaRegistro:date, password:string, codigoSeguridad:string, fotoPerfil:string
 
 //tabla maestro
-npx sequelize-cli model:generate --name Maestro --attributes nombreUsuario:string, descripcion:string, password:string, codigoSeguridad:string 
+npx sequelize-cli model:generate --name Maestro --attributes nombreUsuario:string,descripcion:string,password:string,codigoSeguridad:string,fotoPerfil:string
 
 //tabla administrador
 npx sequelize-cli model:generate --name Administrador --attributes nombreUsuario:string, descripcion:string, password:string

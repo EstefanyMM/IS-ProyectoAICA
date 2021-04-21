@@ -40,8 +40,8 @@ const Navbar = () => {
       }
     });
 
-  const { nombreUsuario, Persona } = maestro;
-  const { nombreCompleto, Correos } = Persona;
+  const { nombreUsuario, Persona, id } = maestro;
+  //const { nombreCompleto, Correos } = Persona;
   
 
 
@@ -55,7 +55,7 @@ const Navbar = () => {
   }
   const logoutt = () => {
 
-    window.location.href = '/perfil-maestro';
+    window.location.href = '/mostrar-perfilm';
   }
 
   const getMaestro = async () => {
@@ -85,11 +85,11 @@ const Navbar = () => {
             </Link>
             <div className="margen"></div>
             <MDBDropdown>
-              <MDBDropdownToggle caret color="white" className="color">
+              <MDBDropdownToggle caret color="black" className="color">
                 {nombreUsuario}
               </MDBDropdownToggle>
               <MDBDropdownMenu basic>
-                <MDBDropdownItem>Editar Perfil</MDBDropdownItem>
+                <MDBDropdownItem><li onClick={logoutt}>Mostar Perfil</li></MDBDropdownItem>
                 <MDBDropdownItem divider />
                 <MDBDropdownItem><li onClick={logout}>Cerrar Sesion</li></MDBDropdownItem>
               </MDBDropdownMenu>
@@ -108,7 +108,7 @@ const Navbar = () => {
               <MDBCol>
                 <MDBJumbotron>
                   <MDBCardBody>
-                    <h2 className="h2"> Maestro: {nombreCompleto} {Correos.email}</h2>
+                    <h2 className="h2"> Maestro: {nombreUsuario} </h2>
                     <p className="blue-text my-4 font-weight-bold">
                       Somos los mejores educadores en Lenguas Extranjeras</p>
                     <MDBCardText>

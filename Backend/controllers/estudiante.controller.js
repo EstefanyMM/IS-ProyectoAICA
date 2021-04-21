@@ -77,7 +77,7 @@ const agregarEstudiante = async (req = request, res = response) => {
 
     let newCorreo = await Correos.create({
         email: req.body.email,
-        PersonaId: newPersona.id
+        idpersona: newPersona.id
     });
 
     let newEstudiante = await Estudiantes.create({

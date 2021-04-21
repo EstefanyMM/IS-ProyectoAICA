@@ -30,13 +30,10 @@ const AsignacionesMaestro = () => {
     }
 
     const handleSubmitImage = async (e) => {
-
         const formData = new FormData();
 
         formData.append('tarea', e.target.files[0]);
         formData.append('descripcion', descripcion);
-
-
         try {
             const resp = await fetch(`http://localhost:4000/idioma/archivo/` + id, {
                 method: 'POST',
