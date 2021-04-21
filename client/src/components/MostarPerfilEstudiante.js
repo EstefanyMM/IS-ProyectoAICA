@@ -109,7 +109,7 @@ const MostarPerfilEstudiante = () => {
                                             <div className="card-body">
                                                 <h4 className="font-weight-extrabold my-4 card-title">Información Personal</h4>
                                                 <p>
-                                                    <img src={`http://localhost:4000/estudiante/${id}/obtenerFoto`}></img>
+                                                    <img width="200px" height="200px" src={`http://localhost:4000/estudiante/${id}/obtenerFoto`}></img>
                                                     <ul className="list-group list-group-flush">
                                                         <li className="list-group-item">Nombre Completo: {nombreCompleto}</li>
                                                         <li className="list-group-item">Numero Identidad: {numeroIdentidad}</li>

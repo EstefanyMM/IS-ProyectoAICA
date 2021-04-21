@@ -36,6 +36,7 @@ import MostarPerfilEstudiante from './components/MostarPerfilEstudiante';
 import EditarPerfilEstudiante from './components/EditarPerfilEstudiante';
 import CodigoSeguridadMaestro from './components/CodigoSeguridadMaestro';
 import codigoseguridadEstudiante from './components/codigoseguridadEstudiante';
+import Crearsecciones from './components/crear_secciones'
 
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={LandingPage} />
             <Route exact path='/prueba' component={Prueba} />
-
+            <Route exact path='/crear-seciones' component={Crearsecciones} />
             <Route exact path="/login" component={LoginPrueba} />
             <Route exact path="/sign-up" component={Prueba} />
             <Route path ="/Navigation" component ={Navigation} />
