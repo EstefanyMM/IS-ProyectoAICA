@@ -4,6 +4,9 @@ const Estudiantes = require('../models').Estudiante;
 const Correos = require('../models').Correo;
 const Idiomas = require('../models').Idioma;
 const EstudianteIdiomas = require('../models').EstudianteIdioma;
+const fs = require('fs');
+const path = require('path');
+
 
 const getEstudiantes = async (req = request, res = response) => {
 
