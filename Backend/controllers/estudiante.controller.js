@@ -44,7 +44,6 @@ const editarEstudiante = async (req = request, res = response) => {
 
     if (estudiantes) {
 
-
         newPersona = await Personas.update({
             nombreCompleto: req.body.nombreCompleto,
             numeroIdentidad: req.body.numeroIdentidad,
@@ -54,18 +53,16 @@ const editarEstudiante = async (req = request, res = response) => {
         });
 
         newCorreo = await Correos.update({
-            email: req.body.email,
-            PersonaId: newPersona.id
+            email: req.body.email
+           // PersonaId: newPersona.id
         });
-
-
 
         await estudiantes.update({
             fechaRegistro: req.body.fechaRegistro,
             password: req.body.password,
             codigoSeguridad: req.body.codigoSeguridad,
-            nombreUsuario: req.body.nombreUsuario,
-            PersonaId: newPersona.id
+            nombreUsuario: req.body.nombreUsuario
+            //PersonaId: newPersona.id
         });
     }
     res.send(estudiantes);

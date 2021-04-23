@@ -14,8 +14,8 @@ export const SidebarData2 = [
    
    
     {
-        title: 'Registro CL',
-        path: '/reports',
+        title: 'Registro Estudiantes',
+        path: '/lista-estudiante',
         icon: <IoIcons.IoIosPaper />,
         cName: 'nav-text'
     },
@@ -32,8 +32,8 @@ export const SidebarData2 = [
         cName: 'nav-text'
     },
     {
-        title: 'Listado',
-        path: '/Listados',
+        title: 'Crear seccion',
+        path: '/crear-seciones',
         icon: <FaIcons.FaCartPlus />,
         cName: 'nav-text'
     },

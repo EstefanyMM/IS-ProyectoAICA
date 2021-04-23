@@ -1,74 +1,84 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import '../../components/Navbar.css'
 import NavbarAdmin from './navbarAdmin';
 
-const ListaEstudiantes=()=>{
-    return(<>
-        <NavbarAdmin>
-        </NavbarAdmin><br></br>
-        <div class="btn-group btn-left" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-primary">Pagina Principal</button>
-        </div>
-        <div class="btn-group btn-right" role="group" aria-label="Basic outlined example">
-            
-            <button type="button" class="btn btn-outline-primary">Atras</button>
-            <button type="button" class="btn btn-outline-primary">Cerrar Sesión</button>
-            </div><br></br><br></br>
-        <div>
-            <h4>Listado Estudiantes</h4>
-        </div><br></br>
-        <div class="divtabla">
-        <table class="table .table-bordered tablahistorial">
+const ListaEstudiantes = () => {
+
+  const [estudiantes, setEstudiantes] = useState([])
+
+  useEffect(() => {
+    obtenerEstudiantes();
+  }, [])
+
+  const obtenerEstudiantes = async () => {
+    const res = await axios.get('http://localhost:4000/estudiante');
+    const data = await res.data;
+    setEstudiantes(data);
+  }
+
+  const eliminarEstudiantes = async (id) => {
+    const res = await axios.delete('http://localhost:4000/estudiante/' + id);
+    const data = await res.data;
+
+    if(data){
+      obtenerEstudiantes();
+    }
+  }
+
+  return (<>
+    <NavbarAdmin>
+    </NavbarAdmin><br></br>
+    <div class="btn-group btn-left" role="group" aria-label="Basic outlined example">
+      <button type="button" class="btn btn-outline-primary">Pagina Principal</button>
+    </div>
+    <div class="btn-group btn-right" role="group" aria-label="Basic outlined example">
+
+      <button type="button" class="btn btn-outline-primary">Atras</button>
+      <button type="button" class="btn btn-outline-primary">Cerrar Sesión</button>
+    </div><br></br><br></br>
+    <div>
+      <h4>Listado Estudiantes</h4>
+    </div><br></br>
+    <div class="divtabla">
+      <table class="table .table-bordered tablahistorial">
         <thead>
-        <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nombre Alumno</th>
-      <th scope="col">Telefono</th>
-      <th scope="col">Correo</th>
-      <th scope="col">Dirección</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark Otto</td>
-      <td>99882256</td>
-      <td>mark@gmail.com</td>
-      <td>colonia el carrizal</td>
-      <td><button type="button" class="btn btn-link">Editar</button><button type="button" class="btn btn-link">Eliminar</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob Thornton</td>
-      <td>98564323</td>
-      <td>jacob@gmail.com</td>
-      <td>colonia el carrizal</td>
-      <td><button type="button" class="btn btn-link">Editar</button><button type="button" class="btn btn-link">Eliminar</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Carlos Reyes</td>
-      <td>95679342</td>
-      <td>carlos@gmail.com</td>
-      <td>colonia el carrizal</td>
-      <td><button type="button" class="btn btn-link">Editar</button><button type="button" class="btn btn-link">Eliminar</button></td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Maria Thornton</td>
-      <td>87956342</td>
-      <td>Maria@gmail.com</td>
-      <td>colonia el carrizal</td>
-      <td><button type="button" class="btn btn-link">Editar</button><button type="button" class="btn btn-link">Eliminar</button></td>
-            </tr>
-            </tbody>
-        </table>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre Alumno</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Dirección</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            estudiantes.map(item => {
+              return (
+                <tr>
+                  <th scope="row">2</th>
+                  <td>{item.Persona.nombreCompleto}</td>
+                  <td>{item.Persona.numeroTelefono}</td>
+                  <td>{item.nombreUsuario}</td>
+                  <td>{item.Persona.direccion}</td>
+                  <td>
+                    <button type="button" class="btn btn-link">Editar</button>
+                    <button onClick={() => eliminarEstudiantes(item.id)} type="button" class="btn btn-link">Eliminar</button>
+                  </td>
+                </tr>
+              )
+            })}
+
+
+
+        </tbody>
+      </table>
     </div><br></br>
     <div>
-    <button type="button" class="btn btn-primary">Agregar</button>
+      <button type="button" class="btn btn-primary">Agregar</button>
     </div>
-</>)    
+  </>)
 }
 
 export default ListaEstudiantes;

@@ -25,4 +25,9 @@ router.post('/restablecer-contrasena', maestro.obtenercodigoMaestro);
 
 router.put('/:id/actualizar-contrasena', maestro.actualizarcontrasena);
 
+router.get('/:id/obtenerFoto', maestro.obtenerFoto);
+
+router.put('/:id/subir', maestro.subirFoto);
+
+
 module.exports = router;

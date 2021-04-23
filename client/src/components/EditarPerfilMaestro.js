@@ -12,6 +12,10 @@ import swal from 'sweetalert';
 
 
  const EditarPerfilMaestro = () => {
+
+  let { Id } = JSON.parse(localStorage.getItem('maestro'));
+
+
     const [maestro, setMaestro] = useState(
         {
           
@@ -33,12 +37,13 @@ import swal from 'sweetalert';
       
         const logout = () =>{
           localStorage.clear();
-          window.location.href = '/login';
+          window.location.href = '/login-maestro';
         }
     
         const logoutt = () => {
           window.location.href = '/perfil-maestro';
         }
+    
     
         //const {id} = useParams();
     
@@ -59,6 +64,19 @@ import swal from 'sweetalert';
                 [e.target.name]: e.target.value
             });
         }
+
+        const handleInputChangeImage = async (e) =>{
+
+          let formData = new FormData();
+
+          formData.append('foto', e.target.files[0]);
+
+          const res = await axios.put('http://localhost:4000/maestro/'+ Id +'/subir', formData);
+          const body = await res.data;
+
+          console.log(body);
+
+        }
     
         const editarMaestro = async () => {
           let { Id } = JSON.parse(localStorage.getItem('maestro'));
@@ -70,6 +88,7 @@ import swal from 'sweetalert';
           //const data = await resp.data;
     
           console.log(data1);
+          window.location.href = '/mostrar-perfilm';
         }
 
         const handleSubmitImage = async (e) => {
@@ -134,16 +153,21 @@ import swal from 'sweetalert';
                     <div className="card col-md-16 my-4">
                     <div className="card-body">
                     <h4 className="font-weight-extrabold my-4 card-title">Informacion Personal</h4>
-                    <img src={`http://localhost:4000/maestro/${id}/obtenerFoto`} className="imagenPerfil"></img>
+                    <img src={`http://localhost:4000/maestro/${Id}/obtenerFoto`} className="imagenPerfil"></img>
                     <div className="form=group">
                         <div className="row justify-content-around">
                         <div className="col-md-4 offset-md-2">
                             <label id="exampleInputEmail1">Nombre Completo</label>
                             <input value={nombreCompleto} type="text" name="nombreCompleto" 
-                            placeholder="HolA" id="exampleInputEmail1"
+                            placeholder="nombre" id="exampleInputEmail1"
                             className="bordeInput1 largo1" onChange={handleInputChange}></input>
                         </div>
                         <div className="col-md-4 offset-md-2">
+                            <label id="exampleInputEmail1">Actualizar foto</label>
+                            <input type="file" class="form-control"  
+                            className="bordeInput1 largo1" onChange={handleInputChangeImage}></input>
+                        </div>
+                        <div className="col-md-4 offset-md-2 d-none">
                             <label>Numero de identidad</label>
                             <input value={numeroIdentidad} className="bordeInput largo2"
                                 type="text" name="numeroIdentidad" 

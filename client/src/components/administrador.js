@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../LoginPrueba.css";
+import "../css/LoginPrueba.css";
 
 function Admin(){
 

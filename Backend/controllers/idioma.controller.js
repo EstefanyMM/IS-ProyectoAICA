@@ -100,7 +100,6 @@ const getArchivoporIdioma = async (req = request, res = response) => {
 
 const agregarTarea = async (req = request, res = response) => {
 
-
     if (!req.files) {
         return res.status(400).json({ message: 'No ha seleccionado un archivo' });
     }
@@ -126,7 +125,6 @@ const agregarTarea = async (req = request, res = response) => {
                     IdiomaId: req.params.id
                 })
             }
-
             res.status(200).json({
                 archivo,
                 message: 'Archivo subido con exito!'

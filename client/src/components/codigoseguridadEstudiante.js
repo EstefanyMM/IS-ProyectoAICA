@@ -1,5 +1,5 @@
-<<<<<<< HEAD:client/src/components/CodigoSeguridad.js
-import React, { useState, } from 'react'
+//HEAD:client/src/components/CodigoSeguridad.js
+/*import React, { useState, } from 'react'
 import axios from "axios";
 
 const Codigoseguridad =() => {
@@ -140,8 +140,8 @@ const Codigoseguridad =() => {
    )
 
 }
-export default Codigoseguridad;
-=======
+export default Codigoseguridad;*/
+
 import React, { useState, } from 'react'
 import axios from "axios";
 
@@ -306,4 +306,4 @@ const CodigoSeguridadEstudiante = () => {
 
 }
 export default CodigoSeguridadEstudiante;
->>>>>>> 6cea3d8562621943ed082fb36521f34ea5a1c2b0:client/src/components/codigoseguridadEstudiante.js
+//6cea3d8562621943ed082fb36521f34ea5a1c2b0:client/src/components/codigoseguridadEstudiante.js

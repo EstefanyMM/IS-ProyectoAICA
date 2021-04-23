@@ -3,11 +3,6 @@ import logo from '../img/logo.jpg';
 import '../fonts/font-awesome/css/font-awesome.css';
 import { MDBIcon } from "mdbreact";
 
-
-
-
-
-
 export class Contact extends Component {
   render() {
     return (
@@ -29,10 +24,10 @@ export class Contact extends Component {
             </div>
             <div className="col-md-3 col-md-offset-1 contact-info">
               <div className="contact-item">
-                <h3>Informacion </h3>
+                <h3>Información </h3>
                 <p>
                   <span>
-                    <i className="fa fa-map-marker"></i> Address
+                    <i className="fa fa-map-marker"></i> Dirección
                   </span>
                   {this.props.data ? this.props.data.address : "loading"}
                 </p>
@@ -40,7 +35,7 @@ export class Contact extends Component {
               <div className="contact-item">
                 <p>
                   <span>
-                    <i className="fa fa-phone"></i> Phone
+                    <i className="fa fa-phone"></i> Teléfono
                   </span>{" "}
                   {this.props.data ? this.props.data.phone : "loading"}
                 </p>
@@ -48,7 +43,7 @@ export class Contact extends Component {
               <div className="contact-item">
                 <p>
                   <span>
-                    <i className="fa fa-envelope-o"></i> Email
+                    <i class="fas fa-mail-bulk"></i> Correo
                   </span>{" "}
                   {this.props.data ? this.props.data.email : "loading"}
                 </p>

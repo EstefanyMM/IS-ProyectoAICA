@@ -12,6 +12,9 @@ import swal from 'sweetalert';
 
 
  const EditarPerfilEstudiante = () => {
+
+  let { Id } = JSON.parse(localStorage.getItem('user'));
+
     const [user, setUser] = useState(
         {
           
@@ -24,14 +27,10 @@ import swal from 'sweetalert';
           
         }
       );
-    
-<<<<<<< HEAD
         const { nombreCompleto, numeroIdentidad, direccion, edad, numeroTelefono, id} = user;
-=======
-        const { nombreUsuario, Persona , id} = user;
-        const { nombreCompleto, numeroIdentidad, direccion, edad, numeroTelefono} = Persona;
->>>>>>> 6cea3d8562621943ed082fb36521f34ea5a1c2b0
-    
+        //const { nombreUsuario, Persona , id} = user;
+        //const { nombreCompleto, numeroIdentidad, direccion, edad, numeroTelefono} = Persona;
+
         useEffect(() => {
           getUser();
         }, []);
@@ -71,11 +70,10 @@ import swal from 'sweetalert';
 
           formData.append('foto', e.target.files[0]);
 
-          const res = await axios.put('http://localhost:4000/estudiante/'+ id +'/subir', formData);
+          const res = await axios.put('http://localhost:4000/estudiante/'+ Id +'/subir', formData);
           const body = await res.data;
 
           console.log(body);
-
         }
     
         const editarEstudiante = async () => {
@@ -88,6 +86,7 @@ import swal from 'sweetalert';
           //const data = await resp.data;
     
           console.log(data1);
+          window.location.href = '/mostrar-perfil';
         }
 
         const handleSubmitImage = async (e) => {
@@ -152,13 +151,13 @@ import swal from 'sweetalert';
                     <div className="card col-md-16 my-4">
                     <div className="card-body">
                     <h4 className="font-weight-extrabold my-4 card-title">Informacion Personal</h4>
-                    <img src={`http://localhost:4000/estudiante/${id}/obtenerFoto`} className="imagenPerfil"></img>
+                    <img src={`http://localhost:4000/estudiante/${Id}/obtenerFoto`} className="imagenPerfil"></img>
                     <div className="form=group">
                         <div className="row justify-content-around">
                         <div className="col-md-4 offset-md-2">
                             <label id="exampleInputEmail1">Nombre Completo</label>
                             <input value={nombreCompleto} type="text" name="nombreCompleto" 
-                            placeholder="HolA" id="exampleInputEmail1"
+                            placeholder="nombre" id="exampleInputEmail1"
                             className="bordeInput1 largo1" onChange={handleInputChange}></input>
                         </div>
 
@@ -167,7 +166,7 @@ import swal from 'sweetalert';
                             <input type="file" class="form-control"  
                             className="bordeInput1 largo1" onChange={handleInputChangeImage}></input>
                         </div>
-                        <div className="col-md-4 offset-md-2">
+                        <div className="col-md-4 offset-md-2 d-none">
                             <label>Numero de identidad</label>
                             <input value={numeroIdentidad} className="bordeInput largo2"
                                 type="text" name="numeroIdentidad" 

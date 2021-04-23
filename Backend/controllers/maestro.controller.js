@@ -4,6 +4,9 @@ const Maestros = require('../models').Maestro;
 const Correos = require('../models').Correo;
 const Idiomas = require('../models').Idioma;
 const MaestroIdiomas = require('../models').MaestroIdioma;
+const path = require('path');
+const fs = require('fs');
+
 
 const agregarMaestro = async (req = request, res = response) => {
 
@@ -170,7 +173,7 @@ const obtenerFoto = async (req = request, res = response) => {
         if (fs.existsSync(pathVideo)) {
             res.sendFile(pathVideo);
         } else {
-            let pathNoImagen = path.resolve(__dirname, `../fotoMestro/no-image.png`);
+            let pathNoImagen = path.resolve(__dirname, `../fotoMaestro/no-image.png`);
             res.sendFile(pathNoImagen);
         }
     } else {
@@ -199,13 +202,13 @@ const subirFoto = async (req = request, res = response) => {
             );
 
             if (maestro) {
-                await estudiante.update({
+                await maestro.update({
                     fotoPerfil: fileUrl
                 })
             }
 
             res.status(200).json({
-                estudiante,
+                maestro,
                 message: 'Foto subida con exito!'
             })
         } catch (error) {

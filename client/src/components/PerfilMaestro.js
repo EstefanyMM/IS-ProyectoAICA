@@ -81,8 +81,6 @@ const Navbar = () => {
             <Link to="#" className='menu-bars'>
               <FaIcons.FaBars onClick={showSidebar} />
             </Link>
-            <Link >
-            </Link>
             <div className="margen"></div>
             <MDBDropdown>
               <MDBDropdownToggle caret color="black" className="color">
@@ -95,8 +93,6 @@ const Navbar = () => {
               </MDBDropdownMenu>
             </MDBDropdown>
 
-          </div>
-          <div>
           </div>
           <MDBContainer>
             <MDBRow>

@@ -34,12 +34,14 @@ import AsignacionesMaestro from './components/AsignacionesMaestro';
 import Matricular from './components/matricular';
 import MostarPerfilEstudiante from './components/MostarPerfilEstudiante';
 import EditarPerfilEstudiante from './components/EditarPerfilEstudiante';
-import CodigoSeguridad from './components/CodigoSeguridad';
 import MostrarPerfilMaestro from './components/MostrarPerfilMaestro';
 import EditarPerfilMaestro from './components/EditarPerfilMaestro';
 import CodigoSeguridadMaestro from './components/CodigoSeguridadMaestro';
 import codigoseguridadEstudiante from './components/codigoseguridadEstudiante';
 import Crearsecciones from './components/crear_secciones'
+import Administrador from './components/administrador';
+import listaEstudiante from '../src/containers/administrador/listaEstudiantes';
+import AsignacionesEstudiante from './components/AsignacionesEstudiante';
 
 
 
@@ -78,12 +80,13 @@ function App() {
             <Route exact path='/matricular/:id' component={Matricular}/>
             <Route exact path='/mostrar-perfil' component={MostarPerfilEstudiante}/>
             <Route exact path='/editarEstudiante/:Id' component={EditarPerfilEstudiante}/>
-
-            <Route exact path='/codigo-seguridad' component={CodigoSeguridad}/>
             <Route exact path='/mostrar-perfilm' component={MostrarPerfilMaestro}/>   
             <Route exact path='/editarMaestro/:Id' component={EditarPerfilMaestro}/>         
             <Route exact path='/codigo-seguridad' component={codigoseguridadEstudiante}/>
             <Route exact path='/codigo-seguridad-maestro' component={CodigoSeguridadMaestro}/>
+            <Route exact path='/administrador' component={Administrador}/>
+            <Route exact path='/lista-estudiante' component={listaEstudiante}/>
+            <Route exact path='/asignacioness/:id' component={AsignacionesEstudiante}/>
 
           </Switch>
         </div>

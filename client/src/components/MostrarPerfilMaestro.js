@@ -43,7 +43,7 @@ import axios from 'axios';
     
         const logout = () => {
             localStorage.clear();
-            window.location.href = '/login';
+            window.location.href = '/login-maestro';
         }
     
         const logoutt = () => {
@@ -108,7 +108,7 @@ import axios from 'axios';
                                                 <div className="card-body">
                                                     <h4 className="font-weight-extrabold my-4 card-title">Información Personal</h4>
                                                     <p>
-                                                        <img src={`http://localhost:4000/estudiante/${id}/obtenerFoto`} className="imagenPerfil"></img>
+                                                        <img src={`http://localhost:4000/maestro/${id}/obtenerFoto`} className="imagenPerfil"></img>
                                                         <ul className="list-group list-group-flush">
                                                             <li className="list-group-item">Nombre Completo: {nombreCompleto}</li>
                                                             <li className="list-group-item">Numero Identidad: {numeroIdentidad}</li>

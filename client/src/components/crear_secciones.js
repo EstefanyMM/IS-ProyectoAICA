@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const Crearsecciones = () => {
     const [state, setstate] = useState(false)
@@ -20,11 +21,18 @@ const Crearsecciones = () => {
           const res = await axios.post('http://localhost:4000/idioma', idioma);
           const data = await res.data;
       
-          console.log(data);
-
-          if (data.id) {
-              //window.location.href = '/idi'
-          }
+          console.log(data);swal({
+            text: 'Seccion creada',
+            icon: "success",
+            button: "Aceptar",
+        }).then(respuesta => {
+            if (respuesta) {
+                window.location.href = '/perfil-maestro';
+            }
+        })
+        if (data.id) {
+            
+        }
       
     }
 
