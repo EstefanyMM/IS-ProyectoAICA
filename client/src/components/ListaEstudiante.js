@@ -62,7 +62,7 @@ export const ListaEstudiante = () => {
                                         <th scope="row">{dato.Estudiante.id}</th>
                                         <th scope="row">{dato.Estudiante.Persona.nombreCompleto}</th>
                                         <td colspan="2">{dato.Estudiante.Persona.numeroTelefono}</td>
-                                        <td>{dato.Estudiante.Persona.Correos[0].email}</td>
+                                        
                                     </tr>
 
                                 )
@@ -78,3 +78,4 @@ export const ListaEstudiante = () => {
     )
 }
 
+//{dato.Estudiante.Persona.Correos[0].email}

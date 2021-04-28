@@ -79,7 +79,7 @@ const CursosEstudiantes = () => {
                                         <h2 className="card-title">{dato.Idioma.nombre}</h2>
                                         <p className="card-text">Nivel: {dato.Idioma.descripcion} </p>
                                         <p className="card-text">Duración: {dato.descripcion} </p>
-                                        <Link to='#' className="btn btn-primary">Ver</Link>
+                                        <Link to={'/asignacioness/'+ dato.Idioma.id} className="btn btn-primary">Subir Asignacion</Link>
                                     </div>
                                 </div>
 

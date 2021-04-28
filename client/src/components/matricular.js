@@ -56,16 +56,8 @@ const Matricular = () => {
         const body = await resp.data;
 
         console.log(body)
-        swal({
-            icon: 'success',
-            text: 'Compra exitosa',
-            button: "Aceptar"
-
-        })
-
-        
+         
      }
-
 
     const getIdioma = async () => {
         //let { Id } = JSON.parse(localStorage.getItem('idioma'));
@@ -77,6 +69,26 @@ const Matricular = () => {
         console.log(idiomas);
 
     }
+
+    const comprarCurso = async () => {
+        let { Id } = JSON.parse(localStorage.getItem('user'));
+
+        const res = await axios.post('http://localhost:4000/estudianteIdioma/', {
+            EstudianteId: Number(Id),
+            IdiomaId: Number(id) 
+        });
+        const data = await res.data;
+        console.log(data);
+        if(data){
+            swal({
+                icon: 'success',
+                text: 'Compra exitosa',
+                button: "Aceptar"
+    
+            })    
+        }
+    }
+
 
     return (
         <div>
@@ -121,7 +133,7 @@ const Matricular = () => {
                     <li className="list-group-item"></li>
                 </ul>
                 <div className="card-body">
-                    <button onClick={matricular} className="card-link" className="btn btn-info btn-lg">Comprar</button>
+                    <button onClick={comprarCurso} className="card-link" className="btn btn-info btn-lg">Comprar</button>
                     <Link to="/cursos" class="card-link">Regresar</Link>
                     
                 </div>

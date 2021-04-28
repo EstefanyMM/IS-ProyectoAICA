@@ -31,12 +31,13 @@ const PerfilPrueba = () => {
         numeroTelefono: '',
         createdAt: '',
         updatedAt: '',
-        Correos: []
+        Correos: [0]
       }
     });
  
   const { nombreUsuario, Persona, id } = user;
-  //const { nombreCompleto, Correos } = Persona;
+  const { nombreCompleto, Correos } = Persona;
+  const{email}=Correos[0];
 
   useEffect(() => {
     getUser();

@@ -25,7 +25,7 @@ import Eventos from './components/eventos';
 import Cursos from './components/cursos';
 import LoginPrueba from './components/LoginEstudiante';
 import PerfilEstudiante from './components/PerfilEstudiante';
-import { Dashboard } from './components/Dashboard';
+import  Dashboard  from './components/Dashboard';
 import  Prueba  from './components/prueba';
 import CursosMaestro from './components/CursosMaestro'
 import {ListaEstudiante} from './components/ListaEstudiante';
@@ -38,10 +38,15 @@ import MostrarPerfilMaestro from './components/MostrarPerfilMaestro';
 import EditarPerfilMaestro from './components/EditarPerfilMaestro';
 import CodigoSeguridadMaestro from './components/CodigoSeguridadMaestro';
 import codigoseguridadEstudiante from './components/codigoseguridadEstudiante';
-import Crearsecciones from './components/crear_secciones'
+import Crearsecciones from './containers/administrador/crear_secciones'
 import Administrador from './components/administrador';
 import listaEstudiante from '../src/containers/administrador/listaEstudiantes';
 import AsignacionesEstudiante from './components/AsignacionesEstudiante';
+import Crearidioma from './containers/administrador/crear_idioma';
+import ListaIdiomas from './containers/administrador/listaIdiomas';
+import ListaMaestro from './containers/administrador/listaMaestros';
+import Crearmaestro from './containers/administrador/crear_maestro';
+import asignarMaestroIdioma from './containers/administrador/asignarMaestroIdioma';
 
 
 
@@ -54,7 +59,8 @@ function App() {
             <Route exact path='/' component={LandingPage} />
             <Route exact path='/prueba' component={Prueba} />
             <Route exact path='/crear-seciones' component={Crearsecciones} />
-
+            <Route exact path='/crear-idioma' component={Crearidioma} />
+            <Route exact path='/crear-maestro' component={Crearmaestro} />
             <Route exact path="/login" component={LoginPrueba} />
             <Route exact path="/sign-up" component={Prueba} />
             <Route path ="/Navigation" component ={Navigation} />
@@ -86,7 +92,10 @@ function App() {
             <Route exact path='/codigo-seguridad-maestro' component={CodigoSeguridadMaestro}/>
             <Route exact path='/administrador' component={Administrador}/>
             <Route exact path='/lista-estudiante' component={listaEstudiante}/>
+            <Route exact path='/lista-maestro' component={ListaMaestro}/>
             <Route exact path='/asignacioness/:id' component={AsignacionesEstudiante}/>
+            <Route exact path='/lista-idioma' component={ListaIdiomas}/>
+            <Route exact path='/asignar-maestro/:id' component={asignarMaestroIdioma}/>
 
           </Switch>
         </div>

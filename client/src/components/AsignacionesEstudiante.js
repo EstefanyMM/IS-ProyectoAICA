@@ -1,4 +1,4 @@
-/* import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../css/cursoEstudiante.css'
@@ -90,7 +90,7 @@ import swal from 'sweetalert';
                                 <tr key={Archivo.id} >
                                     <th scope="row">{Archivo.id} </th>
                                     <th scope="row">{Archivo.nombre} </th>
-                                    <td colSpan="2">{Archivo.descripcion}</td>
+                                    <td scope="row">{Archivo.descripcion}</td>
                                     <td scope="row">{Archivo.url}</td>
                                 </tr>
                             )
@@ -99,8 +99,8 @@ import swal from 'sweetalert';
 
                 </tbody>
             </table>
-            <div><a href="/curso-maestro">Volver a Cursos</a></div>
+            <div><a href="/curso-estudiante">Volver a Cursos</a></div>
         </div>
     )
 }
-export default AsignacionesEstudiante;*/
+export default AsignacionesEstudiante;

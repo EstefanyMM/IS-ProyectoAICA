@@ -5,19 +5,19 @@ const Idiomas = require('../models').Idioma;
 
 const agregarSeccion = async (req = request, res = response) => {
 
-    let newIdioma = await Idioma.create({
+    /*let newIdioma = await Idiomas.create({
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         precio: req.body.precio,
         totalEstudiante: req.body.totalEstudiante	
-    });
+    });*/
 
     let newSeccion = await Seccions.create({
         horaInicio: req.body.horaInicio,	
         horaFin: req.body.horaFin,	
         cuposMaximos: req.body.cuposMaximos,
-        dias: req.body.dias,
-        IdiomaId: newIdioma.id
+        dias: req.body.dias
+        //IdiomaId: newIdioma.id
     });
 
     res.send(newSeccion);

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Clientes = () => {
+export const Maestros = () => {
     return (
         <div className="text-center" >
-            Clientes
+            Maestros
         </div>
     )
 }

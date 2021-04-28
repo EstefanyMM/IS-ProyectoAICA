@@ -1156,7 +1156,7 @@ pre code {
   .order-md-6 {
     order: 6;
   }
-
+.sb-nav-fixed
   .order-md-7 {
     order: 7;
   }
@@ -3976,10 +3976,10 @@ input[type=button].btn-block {
 }
 .navbar-brand {
   display: inline-block;
-  padding-top: 0.3125rem;
+  padding-top: 10px !important;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 2.50rem;
   line-height: inherit;
   white-space: nowrap;
 }
@@ -10100,7 +10100,7 @@ body {
   overflow-y: auto;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
-  padding-left: 225px;
+  padding-left: 205px;
   top: 56px;
 }
 
@@ -10127,15 +10127,15 @@ body {
 }
 
 .sb-topnav {
-  padding-left: 0;
-  height: 56px;
-  z-index: 1039;
+  padding-left: 0 !important;
+  height: 60px !important;
+  z-index: 1039 !important;
 }
 .sb-topnav .navbar-brand {
-  width: 225px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin: 0;
+  width: 225px !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  margin: 0 !important;
 }
 .sb-topnav.navbar-dark #sidebarToggle {
   color: rgba(255, 255, 255, 0.5);

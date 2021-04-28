@@ -21,16 +21,20 @@ const ListaEstudiantes = () => {
     const res = await axios.delete('http://localhost:4000/estudiante/' + id);
     const data = await res.data;
 
-    if(data){
+    if (data) {
       obtenerEstudiantes();
     }
   }
+  const paginaPrincipal = () => {
+    window.location.href = '/admin';
+  }
+
 
   return (<>
     <NavbarAdmin>
     </NavbarAdmin><br></br>
     <div class="btn-group btn-left" role="group" aria-label="Basic outlined example">
-      <button type="button" class="btn btn-outline-primary">Pagina Principal</button>
+      <button onClick={paginaPrincipal} type="button" class="btn btn-outline-primary">Pagina Principal</button>
     </div>
     <div class="btn-group btn-right" role="group" aria-label="Basic outlined example">
 
@@ -44,7 +48,7 @@ const ListaEstudiantes = () => {
       <table class="table .table-bordered tablahistorial">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">Nombre Alumno</th>
             <th scope="col">Telefono</th>
             <th scope="col">Usuario</th>
@@ -57,7 +61,7 @@ const ListaEstudiantes = () => {
             estudiantes.map(item => {
               return (
                 <tr>
-                  <th scope="row">2</th>
+                  <th scope="row">{item.id}</th>
                   <td>{item.Persona.nombreCompleto}</td>
                   <td>{item.Persona.numeroTelefono}</td>
                   <td>{item.nombreUsuario}</td>
@@ -69,12 +73,10 @@ const ListaEstudiantes = () => {
                 </tr>
               )
             })}
-
-
-
         </tbody>
       </table>
-    </div><br></br>
+    </div>
+    <br></br>
     <div>
       <button type="button" class="btn btn-primary">Agregar</button>
     </div>

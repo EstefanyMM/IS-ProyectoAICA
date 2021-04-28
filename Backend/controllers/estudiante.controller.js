@@ -15,7 +15,6 @@ const getEstudiantes = async (req = request, res = response) => {
             {
                 model: Personas,
                 include: [{ model: Correos }]
-
             }
 
         ]
