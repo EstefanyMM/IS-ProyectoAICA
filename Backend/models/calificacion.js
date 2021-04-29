@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Calificacion.belongsTo(models.EstudianteIdioma)
+      Calificacion.belongsTo(models.Estudiante)
+      Calificacion.belongsTo(models.Idioma)
     }
   };
   Calificacion.init({

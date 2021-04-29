@@ -36,11 +36,7 @@ const ListaEstudiantes = () => {
     <div class="btn-group btn-left" role="group" aria-label="Basic outlined example">
       <button onClick={paginaPrincipal} type="button" class="btn btn-outline-primary">Pagina Principal</button>
     </div>
-    <div class="btn-group btn-right" role="group" aria-label="Basic outlined example">
-
-      <button type="button" class="btn btn-outline-primary">Atras</button>
-      <button type="button" class="btn btn-outline-primary">Cerrar Sesión</button>
-    </div><br></br><br></br>
+    <br></br><br></br>
     <div>
       <h4>Listado Estudiantes</h4>
     </div><br></br>
@@ -67,7 +63,6 @@ const ListaEstudiantes = () => {
                   <td>{item.nombreUsuario}</td>
                   <td>{item.Persona.direccion}</td>
                   <td>
-                    <button type="button" class="btn btn-link">Editar</button>
                     <button onClick={() => eliminarEstudiantes(item.id)} type="button" class="btn btn-link">Eliminar</button>
                   </td>
                 </tr>

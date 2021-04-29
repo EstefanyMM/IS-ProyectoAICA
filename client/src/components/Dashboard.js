@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import '../css/styleDash.css'
 import { Usuarios } from './Usuarios';
 import { Maestros } from './Maestros';
+import { EventosAdmin } from './EventosAdmin';
 import Navbar from './Navbar';
 import Sidenav from './Sidenav';
 
@@ -23,6 +24,7 @@ const Dashboard = () => {
                             <Switch>
                                 <Route exact path='/admin/usuarios' component={Usuarios} />
                                 <Route exact path='/admin/maestros' component={Maestros} />
+                                <Route exact path='/admin/eventos' component={EventosAdmin} />
                                 <Redirect to="/admin/usuarios"/>
                             </Switch>
                         </div>

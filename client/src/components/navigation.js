@@ -21,6 +21,7 @@ const [showLinks, setShowLinks] = useState(false);
           <a href="/eventos">Eventos</a>
           <a href="/sign-up">Registrarse</a>
           <a href="#contact">Contactanos</a>
+          <a href="administrador">Admin</a>
           </div>
           <MDBBtn onClick={() => setShowLinks(!showLinks)} className="button2"><MDBIcon icon="bars" className="icono"></MDBIcon></MDBBtn>
         </div>

@@ -28,6 +28,9 @@ const ListaMaestros = () => {
   const paginaPrincipal = () => {
     window.location.href = '/admin';
   }
+  const Crearmaestro = () => {
+    window.location.href = '/crear-maestro';
+  }
 
   return (<>
     <NavbarAdmin>
@@ -35,11 +38,7 @@ const ListaMaestros = () => {
     <div class="btn-group btn-left" role="group" aria-label="Basic outlined example">
       <button onClick={paginaPrincipal} type="button" class="btn btn-outline-primary">Pagina Principal</button>
     </div>
-    <div class="btn-group btn-right" role="group" aria-label="Basic outlined example">
-
-      <button type="button" class="btn btn-outline-primary">Atras</button>
-      <button type="button" class="btn btn-outline-primary">Cerrar Sesión</button>
-    </div><br></br><br></br>
+    <br></br><br></br>
     <div>
       <h4>Listado Maestros</h4>
     </div><br></br>
@@ -64,7 +63,7 @@ const ListaMaestros = () => {
                   <td>{item.Persona.nombreCompleto}</td>
                   <td>{item.Persona.numeroTelefono}</td>
                   <td>{item.Persona.direccion}</td>
-                  <td>{item.Persona.Correos[0].email||''}</td>
+                  <td>{item.Persona.Correos[0].email || ''}</td>
                   <td>
                     <button type="button" class="btn btn-link">Editar</button>
                     <button onclick={() => eliminarMaestros(item.id)} type="button" class="btn btn-link">Eliminar</button>
@@ -76,7 +75,7 @@ const ListaMaestros = () => {
       </table>
     </div><br></br>
     <div>
-      <button type="button" class="btn btn-primary">Agregar</button>
+      <button onClick={Crearmaestro} type="button" class="btn btn-primary">Agregar</button>
     </div>
   </>)
 }

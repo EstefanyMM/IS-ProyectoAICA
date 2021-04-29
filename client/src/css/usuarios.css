@@ -1,0 +1,13 @@
+.fa-Icono{
+    
+    font-size: 100px !important;
+}
+.imgEditPanel{
+background-image: url('../img/blanco.jpg');
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
+    background-color: #e2e2e294;
+}
+

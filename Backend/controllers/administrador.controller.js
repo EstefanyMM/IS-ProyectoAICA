@@ -23,7 +23,7 @@ const agregarAdministrador = async (req = request, res = response) => {
         descripcion: req.body.descripcion,
         password: req.body.password,
         nombreUsuario: req.body.nombreUsuario,
-        PersonaId: newPersona.id
+        idPersona: newPersona.id
     });
 
     res.send(newAdministrador);
@@ -31,7 +31,7 @@ const agregarAdministrador = async (req = request, res = response) => {
 
 const obtenerAdministradors = async (req = request, res = response) => {
 
-    let administradors = await Administradors.findAll({
+    let administradores = await Administradors.findAll({
         include: [
             {
                 model: Personas,
@@ -42,7 +42,7 @@ const obtenerAdministradors = async (req = request, res = response) => {
         ]
     });
 
-    res.send(administradors);
+    res.send(administradores);
 }
 
 const obtenerAdministrador = async (req = request, res = response) => {

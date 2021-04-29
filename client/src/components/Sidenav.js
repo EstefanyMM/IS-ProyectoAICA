@@ -7,18 +7,18 @@ const Sidenav = () => {
             <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div className="sb-sidenav-menu">
                     <div className="nav">
-                        <div className="sb-sidenav-menu-heading">Core</div>
+                        <div className="sb-sidenav-menu-heading"><h3>Opciones</h3></div>
                         <Link to="/admin/usuarios" className="nav-link" >
                             <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
-                            Usuarios
+                            <h4>Usuarios</h4>
                         </Link>
                         <Link to="/admin/maestros" className="nav-link" >
                             <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
-                            Maestros
+                            <h4>Maestros</h4>
                         </Link>
-                        <Link to="/admin/maestros" className="nav-link" >
+                        <Link to="/admin/eventos" className="nav-link" >
                             <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
-                            Eventos
+                            <h4>Eventos</h4>
                         </Link>
                     </div>
                 </div>

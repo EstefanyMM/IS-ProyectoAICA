@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       Idioma.hasMany(models.EstudianteIdioma)
       Idioma.hasMany(models.AsignacionIdioma)
       Idioma.hasMany(models.ArchivoIdioma)
+      Idioma.hasMany(models.Calificacion)
     }
   };
   Idioma.init({

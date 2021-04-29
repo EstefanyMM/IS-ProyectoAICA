@@ -26,7 +26,7 @@ const Navbar = () => {
                         aria-haspopup="true" aria-expanded="false"><i className="fas fa-user fa-fw"></i></Link>
                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 
-                        <Link className="dropdown-item" to="login.html">Cerrar Sesion</Link>
+                        <Link className="dropdown-item" to="/">Cerrar Sesion</Link>
                     </div>
                 </li>
             </ul>

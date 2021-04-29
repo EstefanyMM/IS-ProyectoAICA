@@ -5,12 +5,14 @@ const router = express.Router();
 
 router.get('/', calificacion.getCalificaciones);
 
-router.get('/:id', calificacion.getCalificacion);
+//router.get('/:id', calificacion.getCalificacion);
 
 router.post('/', calificacion.agregarCalificaciones);
 
 router.put('/:id', calificacion.editarCalificaciones);
 
 router.delete('/:id', calificacion.eliminarCalificaciones);
+
+router.get('/:id', calificacion.getCalificacionPorEstudiante);
 
 module.exports = router;

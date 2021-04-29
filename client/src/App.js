@@ -45,8 +45,11 @@ import AsignacionesEstudiante from './components/AsignacionesEstudiante';
 import Crearidioma from './containers/administrador/crear_idioma';
 import ListaIdiomas from './containers/administrador/listaIdiomas';
 import ListaMaestro from './containers/administrador/listaMaestros';
+import ListaEvento from './containers/administrador/listaEventos';
 import Crearmaestro from './containers/administrador/crear_maestro';
 import asignarMaestroIdioma from './containers/administrador/asignarMaestroIdioma';
+import CalificacionesMaestro from './containers/maestros/calificacionesMaestro';
+import Crearevento from './containers/administrador/crear_evento'
 
 
 
@@ -61,6 +64,7 @@ function App() {
             <Route exact path='/crear-seciones' component={Crearsecciones} />
             <Route exact path='/crear-idioma' component={Crearidioma} />
             <Route exact path='/crear-maestro' component={Crearmaestro} />
+            <Route exact path='/crear-evento' component={Crearevento} />
             <Route exact path="/login" component={LoginPrueba} />
             <Route exact path="/sign-up" component={Prueba} />
             <Route path ="/Navigation" component ={Navigation} />
@@ -93,9 +97,11 @@ function App() {
             <Route exact path='/administrador' component={Administrador}/>
             <Route exact path='/lista-estudiante' component={listaEstudiante}/>
             <Route exact path='/lista-maestro' component={ListaMaestro}/>
+            <Route exact path='/lista-evento' component={ListaEvento}/>
             <Route exact path='/asignacioness/:id' component={AsignacionesEstudiante}/>
             <Route exact path='/lista-idioma' component={ListaIdiomas}/>
             <Route exact path='/asignar-maestro/:id' component={asignarMaestroIdioma}/>
+            <Route exact path='/calificaciones/:id' component={CalificacionesMaestro}/>
 
           </Switch>
         </div>

@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Estudiante.belongsTo(models.Persona)
       Estudiante.hasMany(models.Matricula)
       Estudiante.hasMany(models.EstudianteIdioma)
+      Estudiante.hasMany(models.Calificacion)
     }
   };
   Estudiante.init({

@@ -15,7 +15,7 @@ function Admin(){
         </div>
 
         <div className="posicionLogin">
-            <label>Correo Electronico</label>
+            <label>Nombre de Usuario</label>
             <input type="email" className="form-control" 
             name="correo" placeholder="Ingrese su correo" />
         </div>

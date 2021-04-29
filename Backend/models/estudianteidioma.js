@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       EstudianteIdioma.belongsTo(models.Idioma)
       EstudianteIdioma.belongsTo(models.Estudiante)
-      EstudianteIdioma.hasMany(models.Calificacion)
     }
   };
   EstudianteIdioma.init({

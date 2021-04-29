@@ -3,36 +3,37 @@ import axios from 'axios'
 import '../../components/Navbar.css'
 import NavbarAdmin from './navbarAdmin';
 
-const ListaIdiomas = () => {
+const ListaEventos = () => {
 
-  const [idiomas, setIdiomas] = useState([])
+  const [evento, setEvento] = useState([])
 
   useEffect(() => {
-    obtenerIdiomas();
+    obtenerEvento();
   }, [])
 
-  const obtenerIdiomas = async () => {
-    const res = await axios.get('http://localhost:4000/idioma');
+  const obtenerEvento = async () => {
+    const res = await axios.get('http://localhost:4000/evento');
     const data = await res.data;
-    setIdiomas(data);
+    setEvento(data);
   }
 
-  const eliminarIdiomas = async (id) => {
-    const res = await axios.delete('http://localhost:4000/idioma/' + id);
+  const eliminarEvento = async (id) => {
+    const res = await axios.delete('http://localhost:4000/evento/' + id);
     const data = await res.data;
 
     if (data) {
-      obtenerIdiomas();
+      obtenerEvento();
     }
   }
-  const crearidioma = () => {
-    window.location.href = '/crear-idioma';
+  const crearevento = () => {
+    window.location.href = '/crear-evento';
   }
   const paginaPrincipal = () => {
     window.location.href = '/admin';
   }
 
-  return (<>
+  return (
+  <>
     <NavbarAdmin>
     </NavbarAdmin><br></br>
     <div class="btn-group btn-left" role="group" aria-label="Basic outlined example">
@@ -40,7 +41,7 @@ const ListaIdiomas = () => {
     </div>
     <br></br><br></br>
     <div>
-      <h4>Listado de Cursos</h4>
+      <h4>Listado de Eventos</h4>
     </div><br></br>
     <div class="divtabla">
       <table class="table .table-bordered tablahistorial">
@@ -49,23 +50,21 @@ const ListaIdiomas = () => {
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
-            <th scope="col">Precio</th>
-            <th scope="col">totalEstudiante</th>
+            <th scope="col">Fecha</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           {
-            idiomas.map(item => {
+            evento.map(item => {
               return (
                 <tr>
                   <th scope="row">{item.id}</th>
                   <td>{item.nombre}</td>
                   <td>{item.descripcion}</td>
-                  <td>{item.precio}</td>
-                  <td>{item.totalEstudiante}</td>
+                  <td>{item.fechaEvento}</td>
                   <td>
-                    <button onClick={() => eliminarIdiomas(item.id)} type="button" class="btn btn-link">Eliminar</button>
+                    <button onClick={() => eliminarEvento(item.id)} type="button" class="btn btn-link">Eliminar</button>
                   </td>
                 </tr>
               )
@@ -76,9 +75,9 @@ const ListaIdiomas = () => {
     </div>
     <br></br>
     <div>
-      <button onClick={crearidioma} type="button" class="btn btn-primary">Agregar</button>
+      <button  onClick={crearevento} type="button" class="btn btn-primary">Agregar</button>
     </div>
   </>)
 }
 
-export default ListaIdiomas;
+export default ListaEventos;

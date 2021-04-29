@@ -60,7 +60,10 @@ npx sequelize-cli migration:generate --name relacion-seccion-idioma
 npx sequelize-cli migration:generate --name relacion-matricula-estudiante
 
 //relacion tabla Estudiante-EstudianteIdiomas
-npx sequelize-cli migration:generate --name relacion-estudiante-
+npx sequelize-cli migration:generate --name relacion-estudiante-idioma
+
+//relacion tabla Calificaciones-Estudiante-Idioma
+npx sequelize-cli migration:generate --name relacion-calificacion-estudiante-idioma
 
 
 //crear tabla

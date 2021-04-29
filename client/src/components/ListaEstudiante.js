@@ -12,6 +12,10 @@ export const ListaEstudiante = () => {
     const { id } = useParams();
     const [data, setData] = useState([]);
 
+    const [nota, setNota] = useState(0);
+    const [estudiante, setEstudiante] = useState(0);
+
+
     useEffect(() => {
         getEstudiantes();
     }, [])
@@ -24,6 +28,28 @@ export const ListaEstudiante = () => {
         setData(data);
         console.log(data);
     }
+    const handleSubmitNota = async () => {
+        let peticion = {
+            nota,
+            EstudianteId: estudiante,
+            IdiomaId: id
+        }
+
+        console.log(peticion)
+
+        const res = await axios.post('http://localhost:4000/calificacion/', peticion);
+        console.log(res)
+        setEstudiante(0);
+    }
+
+    const handleInputNota = async (e) => {
+        setNota(e.target.value)
+    }
+    const handleInputEstudiante = async (estudiante) => {
+        setEstudiante(estudiante)
+    }
+
+
 
     return (
         <>
@@ -52,8 +78,9 @@ export const ListaEstudiante = () => {
                                 <th scope="col">Nombre Completo</th>
                                 <th scope="col">Contacto</th>
                                 <th scope="col">Correo</th>
-                                <th scope="col">Direccion</th>
-                                <th scope="col">Calificaciones</th>
+                                <th scope="col">Calificar</th>
+                                <th scope="col">Nota</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,8 +92,9 @@ export const ListaEstudiante = () => {
                                             <th scope="row">{dato.Estudiante.Persona.nombreCompleto}</th>
                                             <td colspan="1">{dato.Estudiante.Persona.numeroTelefono}</td>
                                             <td>{dato.Estudiante.Persona.Correos[0].email}</td>
-                                            <td colspan="1">{dato.Estudiante.Persona.direccion}</td>
-                                            <td colspan="1"><a href="/calificaciones-maestro">Seleccionar</a></td>
+                                            <td colspan="1"><button onClick={() => handleInputEstudiante(dato.EstudianteId)}>Agregar Nota</button></td>
+                                            <td colspan="1"><input onChange={handleInputNota} type="number" className="form-control w-25" name="nota" disabled={estudiante == 0 ? true : false}></input></td>
+                                            <td colspan="1"><button onClick={handleSubmitNota} type="button" className="btn btn-primary">Guardar</button></td>
                                         </tr>
 
                                     )
@@ -76,7 +104,28 @@ export const ListaEstudiante = () => {
 
                         </tbody>
                     </table>
+                    
 
+                </div>
+            </div>
+
+            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
