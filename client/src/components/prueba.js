@@ -5,10 +5,12 @@ import '../css/registro.css';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import Swal from "sweetalert2";
 
 
 
- const Prueba = () => {
+
+const Prueba = () => {
     const [estudiante, setEstudiante] = useState({
         nombreCompleto: '',
         numeroIdentidad: '',
@@ -23,7 +25,7 @@ import * as yup from "yup";
     });
 
     const { nombreCompleto, numeroIdentidad, direccion, edad, numeroTelefono, email, fechaRegistro,
-        password, nombreUsuario } = estudiante;
+        password, codigoSeguridad, nombreUsuario } = estudiante;
 
     const handleInputChange = (e) => {
         //console.log(e.target.name + ' : ' + e.target.value);
@@ -42,31 +44,26 @@ import * as yup from "yup";
         const data = await resp.data;
 
         console.log(resp);
-        alert('Bienvenido ');
+        //alert('Bienvenido ');
+        Swal.fire(
+            'Felicidades!',
+            'Registrado con exito!',
+            'success'
+        )
         window.location.href = '/login';
-
-        /*.then((response)=>{
-             if(response.data.status){
-                 alert('Bienvenido')
-                 window.location.href="/Inicio";
-             }if(response.data.message){
-                 setLoginStatus(response.data.message)
-             }else{
-                 setLoginStatus(response.data[0])
-             }
-         });*/
     }
 
     let schema = yup.object().shape({
         nombreCompleto: yup.string().required("campo obligatorio"),
+        nombreUsuario: yup.string().required("campo obligatorio"),
         numeroIdentidad: yup.number().positive().integer().required(),
         fechaRegistro: yup.date().required(),
         numeroTelefono: yup.number().positive().integer().required(),
         direccion: yup.string().required("campo obligatorio"),
         edad: yup.number().positive('Solo numeros positivos').integer().required(),
-        nombreUsuario: yup.string().required("campo obligatorio"),
         email: yup.string().email("correo invalido").required("campo obligatorio"),
-        password: yup.string().required("campo obligatorio").min(6, "minimo 6 caracteres").max(15, "Menos de 15 caracteres")
+        password: yup.string().required("campo obligatorio").min(6, "minimo 6 caracteres").max(15, "Menos de 15 caracteres"),
+        codigoSeguridad: yup.string("Facil de Recordar").required("Campo Obligatorio")
     });
 
     const { register, errors } = useForm({
@@ -94,6 +91,17 @@ import * as yup from "yup";
                     ></input>
                     <p className="text-danger"> {errors.nombreCompleto?.message} </p>
                 </div>
+
+                <div className="posicionRegistro">
+                    <label>Nombre Usuario</label>
+                    <input value={nombreUsuario} className="bordeInput1"
+                        type="text" placeholder="Escriba su nombre de usuario"
+                        name="nombreUsuario" ref={register}
+                        onChange={handleInputChange}
+                    ></input>
+                    <p className="text-danger"> {errors.nombreUsuario?.message} </p>
+                </div>
+
                 <div className="row">
                     <div className="col-md-4">
                         <label>Numero de Identidad</label>
@@ -148,13 +156,13 @@ import * as yup from "yup";
                     </div>
 
                     <div className="col-md-4 offset-md-3">
-                        <label>Nombre de Usuario</label>
-                        <input value={nombreUsuario} className="bordeInput"
-                            type="text" placeholder="Escriba Usuario"
-                            name="nombreUsuario" ref={register}
+                        <label>Codigo de Seguridad</label>
+                        <input value={codigoSeguridad} className="bordeInput"
+                            type="password" placeholder="Escriba un codigo de seguridad"
+                            name="codigoSeguridad" ref={register}
                             onChange={handleInputChange}
                         ></input>
-                        <p className="text-danger"> {errors.nombreUsuario?.message} </p>
+                        <p className="text-danger"> {errors.codigoSeguridad?.message} </p>
                     </div>
                 </div>
 
@@ -179,11 +187,11 @@ import * as yup from "yup";
                         <p className="text-danger">{errors.password?.message}  </p>
                     </div>
                 </div>
-
+                <div className="espacio8"></div>
                 <button className="botonRegistro" type="button" onClick={registrar}>Registrar</button>
-
+                <div className="espacio11"></div>
                 <p className="forgot-password text-center par">
-                    ¿Ya estás registrado <a href="./login">iniciar sesión?</a>
+                    ¿Ya estás registrado<a href="./login">inicia sesión?</a>
                 </p>
                 <p className="text-danger"></p>
                 <div className="espacio"></div>
@@ -191,5 +199,5 @@ import * as yup from "yup";
         </div>
     );
 }
- export default Prueba;
+export default Prueba;
 

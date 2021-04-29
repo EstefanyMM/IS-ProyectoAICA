@@ -17,7 +17,7 @@ import React from 'react'
     return (
         <div className="text-center" >
             Usuarios
-            <div><button type="button" class="btn btn-success" onClick={Crearseccion}>Crear Seccion</button></div>
+            <div><button type="button" class="btn btn-success" onClick={Crearseccion}><i class="fas fa-user-clock">Crear Seccion</i></button></div>
             <div><button type="button" class="btn btn-info" onClick={crearidioma}>Crear Idioma</button></div>
             <div><button type="button" class="btn btn-info" onClick={listaEstudiante}>Lista de Estudiantes</button></div>
             <div><button type="button" class="btn btn-info" onClick={listaIdiomas}>Lista de Cursos</button></div>

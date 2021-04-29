@@ -42,7 +42,7 @@ const Matricular = () => {
   
      }*/
 
-     const matricular = async () =>{
+    const matricular = async () => {
 
         let { Id } = JSON.parse(localStorage.getItem('user'));
 
@@ -51,13 +51,13 @@ const Matricular = () => {
             IdiomaId: id
         }
         //console.log(data)
-        
+
         const resp = await axios.post('http://localhost:4000/estudianteIdioma', data);
         const body = await resp.data;
 
         console.log(body)
-         
-     }
+
+    }
 
     const getIdioma = async () => {
         //let { Id } = JSON.parse(localStorage.getItem('idioma'));
@@ -75,19 +75,24 @@ const Matricular = () => {
 
         const res = await axios.post('http://localhost:4000/estudianteIdioma/', {
             EstudianteId: Number(Id),
-            IdiomaId: Number(id) 
+            IdiomaId: Number(id)
         });
         const data = await res.data;
         console.log(data);
-        if(data){
+        if (data) {
             swal({
                 icon: 'success',
                 text: 'Compra exitosa',
                 button: "Aceptar"
-    
-            })    
+
+            })
         }
     }
+    const logout = () => {
+        localStorage.clear();
+        window.location.href = '/login';
+    }
+
 
 
     return (
@@ -108,7 +113,7 @@ const Matricular = () => {
                                     <MDBDropdownItem href="/login">Login</MDBDropdownItem>
                                     <MDBDropdownItem href="/perfil-estudiante">Volver a Perfil</MDBDropdownItem>
                                     <MDBDropdownItem href="/Eventos">Eventos</MDBDropdownItem>
-                                    <MDBDropdownItem href="/">Salir</MDBDropdownItem>
+                                    <MDBDropdownItem onClick={logout}>Salir</MDBDropdownItem>
                                 </MDBDropdownMenu>
                             </MDBDropdown>
                         </MDBNavItem>
@@ -135,7 +140,7 @@ const Matricular = () => {
                 <div className="card-body">
                     <button onClick={comprarCurso} className="card-link" className="btn btn-info btn-lg">Comprar</button>
                     <Link to="/cursos" class="card-link">Regresar</Link>
-                    
+
                 </div>
             </div>
         </div>

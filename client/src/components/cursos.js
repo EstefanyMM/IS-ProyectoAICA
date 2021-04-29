@@ -38,6 +38,10 @@ const CursosEstudiantes = () => {
     console.log(idiomas);
 
   }
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = '/login';
+  }
   return (
     <>
       <MDBNavbar color="black" dark expand="md">
@@ -53,10 +57,9 @@ const CursosEstudiantes = () => {
                   <div className="d-none d-md-inline" className="texto-curso2">Menu</div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="/login">Login</MDBDropdownItem>
                   <MDBDropdownItem href="/perfil-estudiante">Volver a Perfil</MDBDropdownItem>
                   <MDBDropdownItem href="/Eventos">Eventos</MDBDropdownItem>
-                  <MDBDropdownItem href="/">Salir</MDBDropdownItem>
+                  <MDBDropdownItem onClick={logout}>Salir</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
@@ -84,7 +87,7 @@ const CursosEstudiantes = () => {
           idiomas.map(dato => {
             return (
 
-              <div key={dato.id} className="col-md-4 ">
+              <div key={dato.id} className="col-md-4 offset-md-1">
                 <div >
                   <div className="card" >
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEFvtqECrMv7zSOuH12LdoIh3gYOy0vzjc5T0wOAk-LlJ-siVNR2F_2XrcOjnsZ6_dxT0&usqp=CAU" className="card-img-top" alt="..." />
@@ -102,6 +105,7 @@ const CursosEstudiantes = () => {
         }
       </div >
     </>
+    
   )
 }
 export default CursosEstudiantes;

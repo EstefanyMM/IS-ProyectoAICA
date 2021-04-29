@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom'
 import { SidebarData } from './SidebarData'
 import '../css/perfilEstudiante.css'
 import { IconContext } from 'react-icons'
-import {
-    MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardBody, MDBCardTitle, MDBCardText,
-    MDBDropdown, MDBDropdownItem, MDBDropdownToggle, MDBDropdownMenu
-} from "mdbreact";
+import { MDBDropdown, MDBDropdownItem, MDBDropdownToggle, MDBDropdownMenu } from "mdbreact";
 import axios from 'axios';
+
 
 const MostarPerfilEstudiante = () => {
     const [user, setUser] = useState(
@@ -29,13 +27,14 @@ const MostarPerfilEstudiante = () => {
                 numeroTelefono: '',
                 createdAt: '',
                 updatedAt: '',
-                Correos: []
+                Correos: [0]
             }
         }
     );
 
     const { nombreUsuario, Persona, id } = user;
     const { nombreCompleto, numeroIdentidad, direccion, edad, numeroTelefono, Correos } = Persona;
+    const { email } = Correos[0];
 
     useEffect(() => {
         getUser();
@@ -79,58 +78,65 @@ const MostarPerfilEstudiante = () => {
         return (
             <>
                 <IconContext.Provider value={{ color: '#fff' }}>
-
-                    <div className="navbar">
-                        <Link to="#" className='menu-bars'>
-                            <FaIcons.FaBars onClick={showSidebar} />
-                        </Link>
-                        <Link to="/perfil-prueba" className="linkInicio">Inicio
+                    <div className="imgPerfilfondo">
+                        <div className="navbar">
+                            <Link to="#" className='menu-bars'>
+                                <FaIcons.FaBars onClick={showSidebar} />
+                            </Link>
+                            <Link to="/perfil-prueba" className="linkInicio">Inicio
                   </Link>
-                        <div className="margen"></div>
-                        <MDBDropdown>
-                            <MDBDropdownToggle caret color="ins" className="color">
-                                {nombreUsuario}
-                            </MDBDropdownToggle>
-                            <MDBDropdownMenu basic>
-                                <MDBDropdownItem><li onClick={editar} className="tamanio">Editar Perfil</li></MDBDropdownItem>
-                                <MDBDropdownItem divider />
-                                <MDBDropdownItem><li onClick={logout} className="tamanio">Cerrar Sesion</li></MDBDropdownItem>
-                            </MDBDropdownMenu>
-                        </MDBDropdown>
-                    </div>
+                            <div className="margen"></div>
+                            <MDBDropdown>
+                                <MDBDropdownToggle caret color="ins" className="color">
+                                    {nombreUsuario}
+                                </MDBDropdownToggle>
+                                <MDBDropdownMenu basic>
+                                    <MDBDropdownItem><li onClick={editar} className="tamanio">Editar Perfil</li></MDBDropdownItem>
+                                    <MDBDropdownItem divider />
+                                    <MDBDropdownItem><li onClick={logout} className="tamanio">Cerrar Sesion</li></MDBDropdownItem>
+                                </MDBDropdownMenu>
+                            </MDBDropdown>
+                        </div>
 
-                    <div class="col-lg-12 mx-auto p-3 py-md-5">
-                        <main>
-                            <div className="container-fluid">
-                                <h1 className="mt-4">Perfil</h1>
-                                <div className="row justify-content-md-center">
-                                    <div className="col-lg-8">
-                                        <div className="card col-md-12 my-4" style={sizeRule}>
-                                            <div className="card-body">
-                                                <h4 className="font-weight-extrabold my-4 card-title">Información Personal</h4>
-                                                <p>
-                                                    <img src={`http://localhost:4000/estudiante/${id}/obtenerFoto`} className="imagenPerfil"></img>
+                        <div class="col-lg-12 mx-auto p-3 py-md-5">
+                            <main>
+                                <div className="container-fluid">
+                                    <h1 className="mt-4 perfilColor">Perfil</h1>
+                                    <div className="row justify-content-md-center">
+                                        <div className="col-lg-12 offset-md-1">
+                                            <div className="card col-md-12 my-4" style={sizeRule}>
+                                                <div className="card-body">
+                                                    <h4 className="font-weight-extrabold my-4 card-title">Información Personal</h4>
+                                                    <p className="parCentro">
+                                                        <div class="row justify-content-end">
+                                                            <div class="col-6">
+                                                                <img src={`http://localhost:4000/estudiante/${id}/obtenerFoto`} className="imagenPerfil"></img>
+                                                                <ul className="list-group list-group-flush">
+                                                                    <li className="list-group-item">Usuario: {nombreUsuario}</li>
+                                                                    <li className="list-group-item">Correo Electronico: {user.Persona.Correos[0].email}</li>
+                                                                </ul>
+                                                            </div>
 
-
-                                                    <ul className="list-group list-group-flush">
-                                                        <li className="list-group-item">Nombre Completo: {nombreCompleto}</li>
-                                                        <li className="list-group-item">Numero Identidad: {numeroIdentidad}</li>
-                                                        <li className="list-group-item">Direccion: {direccion}</li>
-                                                        <li className="list-group-item">Edad: {edad}</li>
-                                                        <li className="list-group-item">Numero de Telefono: {numeroTelefono}</li>
-                                                        <li className="list-group-item">Nombre de Usuario: {nombreUsuario}</li>
-                                                        <li className="list-group-item">Direccion de Correo: { }</li>
-                                                    </ul>
-                                                </p>
-                                                <button type="button" class="btn btn-primary btn-lg" onClick={editar} >Editar</button>
+                                                            <div class="col-6 align-self-center">
+                                                                <ul className="list-group list-group-flush">
+                                                                    <li className="list-group-item">Nombre Completo: {nombreCompleto}</li>
+                                                                    <li className="list-group-item">Numero Identidad: {numeroIdentidad}</li>
+                                                                    <li className="list-group-item">Direccion: {direccion}</li>
+                                                                    <li className="list-group-item">Edad: {edad}</li>
+                                                                    <li className="list-group-item">Numero de Telefono: {numeroTelefono}</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </p>
+                                                    <button type="button" class="btn btn-primary btn-lg" onClick={editar} >Editar</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </main>
+                            </main>
+                        </div>
                     </div>
-
                     <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                         <ul className='nav-menu-items' onClick={showSidebar}>
                             <li className="navbar-toggle">

@@ -6,7 +6,7 @@ import * as IoIcons from "react-icons/io";
 
 export const SidebarData2 = [
     {
-        title: 'Perfil',
+        title: 'Inicio',
         path: '/perfil-maestro',
         icon: <AiIcons.AiFillHome />,
         cName: 'nav-text'
@@ -14,33 +14,27 @@ export const SidebarData2 = [
    
    
     {
-        title: 'Registro Estudiantes',
-        path: '/lista-estudiante',
-        icon: <IoIcons.IoIosPaper />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Archivos',
-        path: '/asignaciones',
-        icon: <FaIcons.FaCartPlus />,
+        title: 'Perfil',
+        path: '/mostrar-perfilm',
+        icon: <IoIcons.IoMdPeople />,
         cName: 'nav-text'
     },
     {
         title: 'Cursos',
         path: '/curso-maestro',
-        icon: <IoIcons.IoMdPeople />,
+        icon: <IoIcons.IoIosPaper />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Archivos',
+        path: '/asignaciones/:id',
+        icon: <FaIcons.FaCartPlus />,
         cName: 'nav-text'
     },
     {
         title: 'Crear seccion',
         path: '/crear-seciones',
-        icon: <FaIcons.FaCartPlus />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Salir',
         icon: <IoIcons.IoMdHelpCircle />,
         cName: 'nav-text'
     },
-   
 ]

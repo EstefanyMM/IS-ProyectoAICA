@@ -1,5 +1,5 @@
 .imgSignUp1{
-    background-image: url('./img/Maestros.jpg');
+    background-image: url('../img/Maestros.jpg');
     background-size: cover !important;
     height: -webkit-fill-available !important;
 }

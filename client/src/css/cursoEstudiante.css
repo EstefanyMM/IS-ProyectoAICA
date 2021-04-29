@@ -15,3 +15,7 @@
 .text-area{
     width: 500px;
 }
+
+.item1{
+    width: 160px !important;
+}

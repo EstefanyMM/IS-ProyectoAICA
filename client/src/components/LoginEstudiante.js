@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import "../css/LoginPrueba.css";
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 
 const LoginPrueba = () => {
@@ -33,7 +33,7 @@ const LoginPrueba = () => {
 
         if (data.auth) {
             localStorage.setItem('user', JSON.stringify(data));
-            swal({
+            Swal.fire({
                 text: 'Bienvenido  ' + nombreUsuario,
                 icon: "success",
                 buttons: "Aceptar",
@@ -46,7 +46,11 @@ const LoginPrueba = () => {
 
         }
         else {
-            alert('usuario o contraseña inconrrecta')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Usuario o contraseña incorrectas!'
+            })
         }
 
     }
@@ -97,7 +101,8 @@ const LoginPrueba = () => {
                     <div className="final">
                         <p>No puedes iniciar sesion? <a href="/sign-up">Registrate</a></p>
                     </div>
-                    <Link to="/codigo-seguridad" className="forget">Olvidaste tu contraseña?</Link><p>No puedes iniciar sesion? <a href="/">Inicio</a></p>
+                    <p className="margen2021"><Link to="/codigo-seguridad" className="forget">Olvidaste tu contraseña?</Link></p>
+                    <p>Regresar a <a href="/">Inicio</a></p>
                 </div>
                 <div className="espacio7"></div>
             </form>

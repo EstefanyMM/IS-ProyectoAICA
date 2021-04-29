@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import {MDBNavbar, MDBNavbarBrand, MDBNavItem, MDBDropdown, MDBDropdownToggle, 
-        MDBDropdownMenu, MDBDropdownItem, MDBIcon} from "mdbreact";
+import {
+    MDBNavbar, MDBNavbarBrand, MDBNavItem, MDBDropdown, MDBDropdownToggle,
+    MDBDropdownMenu, MDBDropdownItem, MDBIcon
+} from "mdbreact";
 
 
 const CursosMaestro = () => {
@@ -27,10 +29,13 @@ const CursosMaestro = () => {
         console.log(data);
         console.log(idiomas);
     }
+    const logout = () => {
+        localStorage.clear();
+        window.location.href = '/login-maestro';
+    }
 
     return (
         <>
-
             <MDBNavbar color="blue-dark" dark expand="md">
                 <MDBNavbarBrand>
                     <strong className="red-text" className="text-card">Mis Cursos</strong>
@@ -38,11 +43,11 @@ const CursosMaestro = () => {
                 <MDBNavItem className="card-idioma2">
                     <MDBDropdown>
                         <MDBDropdownToggle nav caret >
-                            <div className="d-none d-md-inline"><MDBIcon icon="home"  className="menu2"/></div>
+                            <div className="d-none d-md-inline"><MDBIcon icon="home" className="menu2" /></div>
                         </MDBDropdownToggle>
                         <MDBDropdownMenu className="dropdown-default">
-                            <MDBDropdownItem href="/login">Login </MDBDropdownItem>
-                            <MDBDropdownItem href="/perfil-maestro">Volver a Perfil</MDBDropdownItem>
+                            <MDBDropdownItem href="/perfil-maestro" className="center1">Inicio</MDBDropdownItem>
+                            <MDBDropdownItem onClick={logout}>Cerrar Sesion</MDBDropdownItem>
                         </MDBDropdownMenu>
                     </MDBDropdown>
                 </MDBNavItem>
@@ -68,6 +73,7 @@ const CursosMaestro = () => {
                 }
             </div>
         </>
+
 
     )
 }

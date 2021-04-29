@@ -42,7 +42,7 @@ const Navbar = () => {
 
   const { nombreUsuario, Persona, id } = maestro;
   //const { nombreCompleto, Correos } = Persona;
-  
+
 
 
   useEffect(() => {
@@ -81,20 +81,22 @@ const Navbar = () => {
             <Link to="#" className='menu-bars'>
               <FaIcons.FaBars onClick={showSidebar} />
             </Link>
+            <Link to="/perfil-maestro" className="linkInicio">Inicio
+            </Link>
             <div className="margen"></div>
             <MDBDropdown>
               <MDBDropdownToggle caret color="black" className="color">
                 {nombreUsuario}
               </MDBDropdownToggle>
               <MDBDropdownMenu basic>
-                <MDBDropdownItem><li onClick={logoutt}>Mostar Perfil</li></MDBDropdownItem>
+                <MDBDropdownItem><li onClick={logoutt}>Mostrar Perfil</li></MDBDropdownItem>
                 <MDBDropdownItem divider />
                 <MDBDropdownItem><li onClick={logout}>Cerrar Sesion</li></MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
 
           </div>
-          <MDBContainer>
+          <MDBContainer className="derecha3">
             <MDBRow>
               <MDBCol>
                 <img src="../logo.jpg" className="rounded mx-auto d-block" alt="aligment" className="sie" />
@@ -111,10 +113,10 @@ const Navbar = () => {
                       Te damos las gracias por ser parte de la Familia AICA,
                       esperamos que tengas la mejor experiencia formando nuevos estudiantes y recuerda
                       "Enseñar es dejar una huella en la vida de una persona".
-              </MDBCardText>
+            </MDBCardText>
                     <hr className="my-4" />
                     <div className="pt-2">
-                      <MDBBtn
+                      <MDBBtn onClick={logoutt}
                         color="primary"
                         className="waves-effect"
                       >
@@ -157,9 +159,7 @@ const Navbar = () => {
             </ul>
           </nav>
         </IconContext.Provider>
-
       </>
-
     );
   } else {
     window.location.href = '/login-maestro'

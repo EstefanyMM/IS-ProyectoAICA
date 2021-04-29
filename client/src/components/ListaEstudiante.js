@@ -27,52 +27,57 @@ export const ListaEstudiante = () => {
 
     return (
         <>
-            <MDBNavbar color="blue-dark" dark expand="md">
-                <MDBNavbarBrand>
-                    <strong className="red-text" className="text-card2">Listado de Estudiantes</strong>
-                </MDBNavbarBrand>
-                <MDBNavItem className="card-idioma3">
-                    <MDBDropdown>
-                        <MDBDropdownToggle nav caret >
-                            <div className="d-none d-md-inline"><MDBIcon icon="home" className="menu3" /></div>
-                        </MDBDropdownToggle>
-                        <MDBDropdownMenu className="dropdown-default">
-                            <MDBDropdownItem href="/login">Login </MDBDropdownItem>
-                            <MDBDropdownItem href="/perfil-maestro">Volver a Perfil</MDBDropdownItem>
-                            <MDBDropdownItem href="/curso-maestro">Volver a Cursos</MDBDropdownItem>
-                        </MDBDropdownMenu>
-                    </MDBDropdown>
-                </MDBNavItem>
-            </MDBNavbar>
-            <div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Nombre Completo</th>
-                            <th scope="col">Contacto</th>
-                            <th scope="col">Correo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            data.map(dato => {
-                                return (
-                                    <tr key={dato.id}>
-                                        <th scope="row">{dato.Estudiante.id}</th>
-                                        <th scope="row">{dato.Estudiante.Persona.nombreCompleto}</th>
-                                        <td colspan="2">{dato.Estudiante.Persona.numeroTelefono}</td>
-                                        
-                                    </tr>
+            <div className="imgFondo3">
+                <MDBNavbar color="blue-dark" dark expand="md">
+                    <MDBNavbarBrand>
+                        <strong className="red-text" className="text-card2">Listado de Estudiantes</strong>
+                    </MDBNavbarBrand>
+                    <MDBNavItem className="card-idioma3">
+                        <MDBDropdown>
+                            <MDBDropdownToggle nav caret >
+                                <div className="d-none d-md-inline"><MDBIcon icon="home" className="menu3" /></div>
+                            </MDBDropdownToggle>
+                            <MDBDropdownMenu className="dropdown-default">
+                                <MDBDropdownItem href="/perfil-maestro">Volver a Perfil</MDBDropdownItem>
+                                <MDBDropdownItem href="/curso-maestro">Volver a Cursos</MDBDropdownItem>
+                            </MDBDropdownMenu>
+                        </MDBDropdown>
+                    </MDBNavItem>
+                </MDBNavbar>
+                <div className="Container">
+                    <table className="table">
+                        <thead class="bg-secondary letraH">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nombre Completo</th>
+                                <th scope="col">Contacto</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">Calificaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                data.map(dato => {
+                                    return (
+                                        <tr class="table-secondary" key={dato.id}>
+                                            <th scope="row">{dato.Estudiante.id}</th>
+                                            <th scope="row">{dato.Estudiante.Persona.nombreCompleto}</th>
+                                            <td colspan="1">{dato.Estudiante.Persona.numeroTelefono}</td>
+                                            <td>{dato.Estudiante.Persona.Correos[0].email}</td>
+                                            <td colspan="1">{dato.Estudiante.Persona.direccion}</td>
+                                            <td colspan="1"><a href="/calificaciones-maestro">Seleccionar</a></td>
+                                        </tr>
 
-                                )
-                            })
-                        }
+                                    )
+                                })
+                            }
 
 
-                    </tbody>
-                </table>
-                
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
         </>
     )

@@ -127,7 +127,7 @@ span {
 /*Editar*/
 
 .row1{
-    margin-left: 50px !important;
+    margin-left: 65px !important;
 }
 
 .largo1{
@@ -141,5 +141,81 @@ span {
 .imagenPerfil{
     height: 200px;
     width: 200px;
+}
 
+.imgPerfilfondo{
+    background-image: url('../img/natural.jpg');
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
+    background-color: #00000094;
+}
+
+.perfilColor{
+    color: white;
+}
+
+.list-group-item {
+    font-size: 17px !important;
+}
+
+.parCentro{
+    margin-left: 100px;
+}
+
+.imgEdit{
+    background-image: url('../img/de.png');
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
+    background-color: #00000094;
+}
+
+.actualizar2{
+    margin-top: 20px;
+    margin-left: 135px;
+}
+
+.hola22{
+    flex-direction: column !important;
+    display: flex !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+}
+
+.espacio24{
+    height: 8px;
+}
+
+.imgPerfilfondo2{
+    background-image: url('../img/verde.jpg');
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
+    background-color: #00000094;
+}
+
+.derecha2{
+    margin-left: 140px !important;
+}
+
+.derecha3{
+    margin-left: 160px !important;  
+}
+
+.imgEdit2{
+    background-image: url('../img/degradado2.jpg');
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
+    background-color: #00000094;
+}
+
+.left1{
+    margin-left: 80px !important;
 }

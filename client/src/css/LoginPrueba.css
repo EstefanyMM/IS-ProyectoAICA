@@ -139,7 +139,7 @@ input:focus::-webkit-input-placeholder {
 
 /* Maestro */
 
-.imgSignUp1{
+.imgSignUp11{
     background-image: url('../img/Maestros.jpg');
     background-repeat: no-repeat !important;
     background-size: cover !important;
@@ -206,4 +206,50 @@ input:focus::-webkit-input-placeholder {
 .btn-login2:hover{
     background-color: #ce6f16;
     border-color: #ce6f16;
+}
+
+.margen2021{
+    margin-top: 29px !important;
+}
+
+.imgFondo{
+    background-image: url('../img/japon.jpg');
+    height: 100%;
+    background-size: cover;
+    background-color: #0000006e;
+    background-blend-mode: color;
+}
+
+.imgFondo2{
+    background-image: url('../img/fondo12.png');
+    height: 100%;
+    background-size: cover;
+    background-color: #0000006e;
+    background-blend-mode: color;
+}
+
+.espacio25{
+    height: 18px;
+}
+
+.imgFondo3{
+    background-image: url('../img/blanco.jpg');
+    height: 100%;
+    background-size: cover;
+    background-color: #0000006e;
+    background-blend-mode: color;
+}
+
+.imgArchivo{
+    background-image: url('../img/blanco1.jpg');
+    height: 100%;
+    background-size: cover;
+}
+
+.imgFondo4{
+    background-image: url('../img/blanco3.jpg');
+    height: 100%;
+    background-size: cover;
+    background-color: #0000006e;
+    background-blend-mode: color;
 }
